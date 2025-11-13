@@ -1,46 +1,287 @@
-/* Generieke stijlen, waarschijnlijk hoeven jullie deze niet aan te passen */
+/* Algemene reset en basis */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
 
-@layer styleguide {
-  html, body {
-    scroll-behavior: smooth;
+body {
+  line-height: 1.6;
+  background-color: #FFD700;
+  color: #333;
+}
+
+/* Container max-width */
+main, footer, header {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #002646;
+  border-bottom: 2px solid #eaeaea;
+}
+
+header img {
+  height: 60px;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #f9f9f9;
+  font-weight: bold;
+}
+
+header nav ul li a:hover {
+  color: #0077cc;
+}
+
+label {
+  display: block;
+  font:
+    1rem "Fira Sans",
+    sans-serif;
+    color: #f9f9f9;
+}
+
+input,
+label {
+  margin: 0.4rem 0;
+}
+
+/* Hero afbeelding bovenaan */
+.hero {
+  background: url('https://walksinamsterdam.nl/wp-content/uploads/2024/08/embassy-of-the-free-mind-Amsterdam.jpg') center/cover no-repeat;
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slideshow figure {
+  position: absolute;
+
+  opacity: 0;
+  animation: slideAnimation 12s infinite;
+
+  background-image:linear-gradient(transparent 50%, black);
+}
+
+.slideshow img {
+  
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+
+  mix-blend-mode: darken;
+
+  /* opacity:.5; */
+  
+}
+
+/* Elke afbeelding start op een ander tijdstip */
+.slideshow figure:nth-child(1) {
+  animation-delay: 0s;
+}
+.slideshow figure:nth-child(2) {
+  animation-delay: 4s;
+}
+.slideshow figure:nth-child(3) {
+  animation-delay: 8s;
+}
+
+/* Animatie */
+@keyframes slideAnimation {
+  0% { opacity: 0; }
+  8% { opacity: 1; }
+  33% { opacity: 1; }
+  41% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.hero-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  text-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+
+/* Cards container */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+/* Kaarten */
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 20px;
+  width: 100%;
+  max-width: 300px;
+  flex: 1 1 300px; /* Flex-grow, flex-shrink, basis */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+.cards-container h2 {
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  background-color: #002646;;
+  color: #fff;
+  padding: 40px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+footer ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+footer ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+footer ul li a:hover {
+  color: #0077cc;
+}
+
+footer section {
+  flex: 1 1 200px;
+}
+
+footer h3 {
+  margin-bottom: 10px;
+}
+
+/* Subscribe form */
+footer form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+footer input[type="email"] {
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-buttons a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.social-buttons a.facebook { background-color: #3b5998; }
+.social-buttons a.instagram { background-color: #e4405f; }
+.social-buttons a.youtube { background-color: #ff0000; }
+
+.social-buttons a:hover {
+  opacity: 0.8;
+}
+
+/* Media Queries voor mobiel */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  body {
-    max-width: 40em;
-    margin: auto;
-    background: #fff;
+
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
   }
-  nav:not([class]),
-  h1:not([class]),
-  h2:not([class]),
-  p:not([class]),
-  figcaption:not([class]) {
-    font-family: sans-serif;
-    line-height: 1.5;
+
+  .cards-container {
+    flex-direction: column;
+    padding: 20px 0;
   }
-  p:not([class]) > code:not([class]) {
-    display: block;
+
+  footer {
+    flex-direction: column;
+    gap: 30px;
   }
-  nav:not([class]) > a {
-    padding: .5em;
-    border: 1px solid;
-    color: inherit;
-    text-decoration: none;
-    &:hover, &:focus {
-      text-decoration: underline;
-    }
-  }
-  figure:not([class]) {
-    display: grid;
-    grid-template-columns: 6rem 1fr;
-    align-items: center;
-    gap: 1rem;
-    margin: 1rem 0;
-    > code {
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      aspect-ratio: 1;
-      background: #ccc;
-    }
+
+  footer section {
+    flex: 1 1 100%;
   }
 }
+
+/* Responsive */
+@media (min-width: 481px) {
+  nav {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  nav button {
+    width: auto;
+  }
+}
+
+@media (min-width: 769px) {
+  section img {
+    width: 70%;
+  }
+}
+
