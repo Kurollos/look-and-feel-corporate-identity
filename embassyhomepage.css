@@ -1,0 +1,49 @@
+/* =============================
+   Fonts
+============================= */
+
+@font-face {
+    font-family: "Cinzel";
+    src: url("../assets/fonts/Cinzel-VariableFont_wght.ttf");  
+}
+
+/* =============================
+   Root variabelen
+============================= */
+:root {
+    --color-primary: #002646;
+    --color-secondary: #ffffff;
+    --color-accent: #d8b66a;
+    --color-inactive: #E9E9E9;
+    --color-inactive-dark: #6E6E6E;
+
+    --spacing-m: 1.875rem;
+    --spacing-s: calc(var(--spacing-m) / 2);
+
+    --animation-duration: 0.3s;
+
+    --font-size-xxl: 4rem;
+    --font-size-xl: 3rem;
+    --font-size-l: 2rem;
+    --font-size-m: 1.5rem;
+    --font-size-s: 1rem;
+}
+
+/* =============================
+   Algemene reset en basis
+============================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--color-primary);
+    line-height: 1.6;
+    background-color: var(--color-secondary);
+    padding-inline: var(--spacing-m);
+}
