@@ -77,6 +77,70 @@ header nav ul li input[type="search"] {
 }
 
 /* ============================= 
+   Catalog Formulier
+============================= */
+.catalog-form {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #f4f4f4;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.catalog-form h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.catalog-form p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.catalog-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.catalog-form label {
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.catalog-form input[type="text"],
+.catalog-form input[type="number"],
+.catalog-form select,
+.catalog-form textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--color-primary);
+    width: 100%;
+    font-size: var(--font-size-s);
+}
+
+.catalog-form textarea {
+    resize: vertical;
+}
+
+.catalog-form button[type="submit"] {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.catalog-form button[type="submit"]:hover {
+    background-color: var(--color-accent);
+}
+
+
+/* ============================= 
    Boekencatalogus
 ============================= */
 .book-catalog {
