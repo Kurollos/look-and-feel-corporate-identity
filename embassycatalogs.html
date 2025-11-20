@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embassy of the Mind Museum 2025</title>
+  <link rel="stylesheet" href="https://kurollos.github.io/look-and-feel-styleguide/styleguide-embassy-free-mind.css">
+  <link rel="stylesheet" href="embassyhomepage.css">
+ 
+</head>
+<body>
+
+<header>
+  <img src="https://embassyofthefreemind.com/images/logo/logo.png" alt="Logo - Huis met de hoofden">
+
+  <nav class="menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">Plan your Visit</a></li>
+      <li><a href="#">Tickets</a></li>
+      <li><a href="embassycatalogs.html">Catalogscollection</a></li>
+      <li><a href="#">Stories</a></li>
+
+      <li><input type="search" id="site-search" name="q" placeholder="Zoeken..." /></li>
+    </ul>
+  </nav>
+</header>
+
+
+<main>
+  <section class="catalog-form">
+    <h1>Book Catalog Formulier</h1>
+    <p>Vul dit formulier in om een boek toe te voegen aan de collectie.</p>
+
+    <form action="#" method="post">
+      <label for="title">Titel van het boek:</label>
+      <input type="text" id="title" name="title" placeholder="Bijv. De Kleine Prins" required>
+
+      <label for="author">Auteur:</label>
+      <input type="text" id="author" name="author" placeholder="Bijv. Antoine de Saint-Exupéry" required>
+
+      <label for="year">Jaar van uitgave:</label>
+      <input type="number" id="year" name="year" placeholder="Bijv. 1943" min="1000" max="2099" required>
+
+      <label for="genre">Genre:</label>
+      <select id="genre" name="genre" required>
+        <option value="">Selecteer genre</option>
+        <option value="fiction">Fictie</option>
+        <option value="non-fiction">Non-fictie</option>
+        <option value="fantasy">Fantasy</option>
+        <option value="science">Science</option>
+        <option value="history">Geschiedenis</option>
+      </select>
+
+      <label for="description">Korte beschrijving:</label>
+      <textarea id="description" name="description" rows="4" placeholder="Bijv. Een klassiek kinderboek over..." required></textarea>
+
+      <button type="submit">Toevoegen aan catalogus</button>
+    </form>
+  </section>
+</main>
+
+  
+
+  <!-- FOOTER -->
+<footer class="menu">
+  <!-- Menu links -->
+  <ul>
+    <li><a href="#">Donatie</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="#">FAQ</a></li>
+  </ul>
+
+  <!-- Adres en openingstijden -->
+  <section>
+    <h3>Adres & Openingstijden</h3>
+    <p>Keizersgracht 123</p>
+    <p>1015 CJ Amsterdam, Nederland</p>
+    <p>Maandag - Vrijdag: 10:00 - 17:00</p>
+    <p>Zaterdag - Zondag: 11:00 - 18:00</p>
+  </section>
+  
+  <!-- Social Media -->
+  <section class="social-media">
+  <h3>Volg ons</h3>
+  <div class="social-buttons">
+    <a href="https://www.facebook.com/embassyofthefreemind/" class="facebook" target="_blank" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i> Facebook
+    </a>
+    <a href="https://www.instagram.com/embassyofthefreemind/" class="instagram" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+    <a href="https://www.youtube.com/theritmanlibrary" class="youtube" target="_blank" aria-label="YouTube">
+      <i class="fab fa-youtube"></i> YouTube
+    </a>
+  </div>
+</section>
+
+  <!-- Subscribe / Nieuwsbrief -->
+  <section>
+    <h3>Abonneer op onze nieuwsbrief</h3>
+    <form action="#" method="post">
+      <label for="email">E-mailadres:</label>
+      <input type="email" id="email" name="email" placeholder="jouw@email.com" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+</footer>
