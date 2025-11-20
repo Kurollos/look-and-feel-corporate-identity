@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Embassy of the Mind Museum 2025</title>
   <link rel="stylesheet" href="https://kurollos.github.io/look-and-feel-styleguide/styleguide-embassy-free-mind.css">
-  <link rel="stylesheet" href="embassyhomepage.css">
+  <link rel="stylesheet" href="embassycatalogs.css">
  
 </head>
 <body>
@@ -32,32 +32,47 @@
     <p>Vul dit formulier in om een boek toe te voegen aan de collectie.</p>
 
     <form action="#" method="post">
-      <label for="title">Titel van het boek:</label>
-      <input type="text" id="title" name="title" placeholder="Bijv. De Kleine Prins" required>
+      <label for="title">Titel van het boek:
+        <input type="text" id="title" name="title" placeholder="Bijv. De Kleine Prins" required>
+      </label>
 
-      <label for="author">Auteur:</label>
-      <input type="text" id="author" name="author" placeholder="Bijv. Antoine de Saint-Exupéry" required>
+      <label for="author">Auteur:
+        <input type="text" id="author" name="author" placeholder="Bijv. Antoine de Saint-Exupéry" required>
+      </label>
 
-      <label for="year">Jaar van uitgave:</label>
-      <input type="number" id="year" name="year" placeholder="Bijv. 1943" min="1000" max="2099" required>
+      <label for="year">Jaar van uitgave:
+        <input type="number" id="year" name="year" placeholder="Bijv. 1943" min="1000" max="2099" required>
+      </label>
 
-      <label for="genre">Genre:</label>
-      <select id="genre" name="genre" required>
-        <option value="">Selecteer genre</option>
-        <option value="fiction">Fictie</option>
-        <option value="non-fiction">Non-fictie</option>
-        <option value="fantasy">Fantasy</option>
-        <option value="science">Science</option>
-        <option value="history">Geschiedenis</option>
-      </select>
+      <label for="genre">Genre:
+        <select id="genre" name="genre" required>
+          <option value="">Selecteer genre</option>
+          <option value="fiction">Fictie</option>
+          <option value="non-fiction">Non-fictie</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="science">Science</option>
+          <option value="history">Geschiedenis</option>
+        </select>
+      </label>
 
-      <label for="description">Korte beschrijving:</label>
-      <textarea id="description" name="description" rows="4" placeholder="Bijv. Een klassiek kinderboek over..." required></textarea>
+      <label for="description">Korte beschrijving/opmerking:
+        <textarea id="description" name="description" rows="4" placeholder="Bijv. Een klassiek kinderboek over..." required></textarea>
+      </label>
+
+      <!-- Aantal boeken met min/plus buttons -->
+      <label for="quantity">Aantal:
+        <div class="quantity-input">
+          <button class="aantal-min" type="button" onclick="changeQuantity(-1)">-</button>
+          <input type="number" id="quantity" name="quantity" value="1" min="1">
+          <button class="aantal-add" type="button" onclick="changeQuantity(1)">+</button>
+        </div>
+      </label>
 
       <button type="submit">Toevoegen aan catalogus</button>
     </form>
   </section>
-</main>
+
+  
 
   <section class="book-catalog">
     <div class="cards">
