@@ -1,5 +1,6 @@
 /* =============================
    Fonts
+   (Stylesheet: externe font)
 ============================= */
 @font-face {
     font-family: "Cinzel";
@@ -8,20 +9,21 @@
 
 /* =============================
    Root variabelen
+   (Custom Properties)
 ============================= */
 :root {
-    --color-primary: #002646;
-    --color-secondary: #ffffff;
-    --color-accent: #d8b66a;
-    --color-inactive: #E9E9E9;
+    --color-primary: #002646;          /* custom property voor primaire kleur */
+    --color-secondary: #ffffff;        /* custom property voor secundaire kleur */
+    --color-accent: #d8b66a;           /* custom property voor accent kleur */
+    --color-inactive: #E9E9E9;         
     --color-inactive-dark: #6E6E6E;
 
-    --spacing-m: 1.875rem;
+    --spacing-m: 1.875rem;             /* custom property voor spacing */
     --spacing-s: calc(var(--spacing-m) / 2);
 
-    --animation-duration: 0.3s;
+    --animation-duration: 0.3s;        /* custom property voor animatie snelheid */
 
-    --font-size-xxl: 4rem;
+    --font-size-xxl: 4rem;             /* custom properties voor font-sizes */
     --font-size-xl: 3rem;
     --font-size-l: 2rem;
     --font-size-m: 1.5rem;
@@ -30,6 +32,7 @@
 
 /* =============================
    Algemene reset en basis
+   (Cascade: basisregels voor alle elementen)
 ============================= */
 *,
 *::before,
@@ -39,48 +42,51 @@
     padding: 0;
 }
 
+/* Cascade en Custom Properties */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--color-primary);
+    font-family: Arial, Helvetica, sans-serif;  /* element selector, lage specificity */
+    color: var(--color-primary);                /* custom property */
     line-height: 1.6;
-    background-color: var(--color-secondary);
-    padding-inline: var(--spacing-m);
+    background-color: var(--color-secondary);   /* custom property */
+    padding-inline: var(--spacing-m);           /* custom property */
 }
 
 /* =============================
    Typografie
+   (Cascade & Specificity & Custom Properties)
 ============================= */
 h1 {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-xl);   /* custom property */
     font-family: "Cinzel";
 }
+/* Cascade: media query overschrijft de basis h1 */
 @media (min-width: 900px) {
-    h1 { font-size: var(--font-size-xxl); }
+    h1 { font-size: var(--font-size-xxl); }   /* custom property */
 }
 
 h2 {
-    font-size: var(--font-size-l);
+    font-size: var(--font-size-l);    /* custom property */
     text-transform: uppercase;
     font-weight: 400;
 }
 
-h3 {
-    font-size: var(--font-size-m);
-}
+h3 { font-size: var(--font-size-m); }   /* custom property */
 
 p {
-    font-size: var(--font-size-s);
+    font-size: var(--font-size-s);    /* custom property */
     font-weight: 400;
     line-height: 1.4;
 }
 
 /* =============================
    Links & buttons
+   (Specificity: class selectors)
+   (Custom Properties: kleuren, spacing, animatie)
 ============================= */
 a {
-    font-size: var(--font-size-s);
+    font-size: var(--font-size-s);    /* custom property */
     text-decoration: none;
-    color: var(--color-primary);
+    color: var(--color-primary);      /* custom property */
     display: grid;
     grid-template-columns: max-content min-content;
     gap: 0.5rem;
@@ -92,63 +98,56 @@ a.button {
     border-radius: 100px;
     border: 0;
     gap: 1.5rem;
-    margin-block: var(--spacing-s);
-    transition: all var(--animation-duration) ease;
+    margin-block: var(--spacing-s);   /* custom property */
+    transition: all var(--animation-duration) ease;  /* custom property */
 }
 
 a.button.primary {
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
+    background-color: var(--color-primary);   /* custom property */
+    color: var(--color-secondary);            /* custom property */
 }
 
 a.button.secondary {
     background-color: var(--color-secondary);
-    border: 1px solid var(--color-primary);
+    border: 1px solid var(--color-primary);   /* custom property */
 }
 
 /* =============================
    Header
+   (Specificity: element + class selectors)
+   (Cascade: hover overschrijft a kleur)
+   (Custom Properties: kleuren)
 ============================= */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    background-color: var(--color-primary);
+    background-color: var(--color-primary);   /* custom property */
     border-bottom: 2px solid #eaeaea;
 }
 
 header img { height: 60px; }
 
-header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
+header nav ul { list-style: none; display: flex; gap: 30px; }
 
 header nav ul li a {
     text-decoration: none;
-    color: var(--color-secondary);
+    color: var(--color-secondary);           /* custom property */
     font-weight: bold;
 }
 
-header nav ul li a:hover { color: var(--color-accent); }
+header nav ul li a:hover { color: var(--color-accent); } /* cascade & custom property */
 
 /* =============================
    Hero / Slideshow
+   (Specificity: class selectors)
+   (Cascade: nth-child overschrijft basis animatie)
+   (Custom Properties: kleuren)
 ============================= */
-.hero {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-}
+.hero { position: relative; width: 100%; height: 400px; overflow: hidden; }
 
-.slideshow {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
+.slideshow { position: relative; width: 100%; height: 100%; }
 
 .slideshow figure {
     position: absolute;
@@ -158,18 +157,15 @@ header nav ul li a:hover { color: var(--color-accent); }
     height: 100%;
     margin: 0;
     opacity: 0;
-    animation: slideAnimation 12s infinite;
+    animation: slideAnimation 12s infinite;  /* custom animatie */
 }
 
+/* Cascade: nth-child overschrijft basis animatie delay */
 .slideshow figure:nth-child(1) { animation-delay: 0s; }
 .slideshow figure:nth-child(2) { animation-delay: 4s; }
 .slideshow figure:nth-child(3) { animation-delay: 8s; }
 
-.slideshow img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+.slideshow img { width: 100%; height: 100%; object-fit: cover; }
 
 @keyframes slideAnimation {
     0% { opacity: 0; }
@@ -183,12 +179,15 @@ header nav ul li a:hover { color: var(--color-accent); }
     position: absolute;
     bottom: 20px;
     left: 20px;
-    color: var(--color-secondary);
+    color: var(--color-secondary); /* custom property */
     text-shadow: 0 0 10px rgba(0,0,0,0.7);
 }
 
 /* =============================
    Cards
+   (Specificity: class selectors)
+   (Cascade: hover overschrijft basis .card)
+   (Custom Properties: kleuren)
 ============================= */
 .cards-container {
     display: flex;
@@ -199,7 +198,7 @@ header nav ul li a:hover { color: var(--color-accent); }
 }
 
 .card {
-    background-color: var(--color-secondary);
+    background-color: var(--color-secondary);  /* custom property */
     border-radius: 12px;
     overflow: hidden;
     padding: 20px;
@@ -217,8 +216,8 @@ header nav ul li a:hover { color: var(--color-accent); }
 }
 
 .card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+    transform: translateY(-8px) scale(1.03);  /* cascade */
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);  /* cascade */
 }
 
 .cards-container h2 {
@@ -229,10 +228,13 @@ header nav ul li a:hover { color: var(--color-accent); }
 
 /* =============================
    Footer
+   (Specificity: class + element selectors)
+   (Cascade: hover overschrijft link kleur)
+   (Custom Properties: kleuren)
 ============================= */
 footer {
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
+    background-color: var(--color-primary); /* custom property */
+    color: var(--color-secondary);         /* custom property */
     padding: 40px 20px;
     display: flex;
     flex-wrap: wrap;
@@ -253,10 +255,10 @@ footer ul {
 
 footer ul li a {
     text-decoration: none;
-    color: var(--color-secondary);
+    color: var(--color-secondary);  /* custom property */
 }
 
-footer ul li a:hover { color: var(--color-accent); }
+footer ul li a:hover { color: var(--color-accent); } /* cascade & custom property */
 
 footer form {
     display: flex;
@@ -292,10 +294,11 @@ footer input[type="email"] {
 .social-buttons a.instagram { background-color: #ffffff; }
 .social-buttons a.youtube { background-color: #ffffff; }
 
-.social-buttons a:hover { opacity: 0.8; }
+.social-buttons a:hover { opacity: 0.8; } /* cascade */
 
 /* =============================
    Media Queries
+   (Cascade: overschrijft basisregels bij schermbreedtes)
 ============================= */
 @media (max-width: 768px) {
     header { flex-direction: column; align-items: flex-start; }
@@ -315,6 +318,6 @@ footer input[type="email"] {
 }
 
 @media (prefers-color-scheme: dark) {
-    img { opacity: 0.75; transition: opacity 0.5s ease-in-out; }
+    img { opacity: 0.75; transition: opacity 0.5s ease-in-out; }  /* cascade */
     img:hover { opacity: 1; }
 }
