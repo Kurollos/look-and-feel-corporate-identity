@@ -1,27 +1,29 @@
-/* ============================= 
+/* =============================
    Root Variabelen
+   (Custom Properties)
 ============================= */
 :root {
-    --color-primary: #002646;
-    --color-secondary: #ffffff;
-    --color-accent: #d8b66a;
-    --color-inactive: #E9E9E9;
+    --color-primary: #002646;        /* custom property voor primaire kleur */
+    --color-secondary: #ffffff;      /* custom property voor secundaire kleur */
+    --color-accent: #d8b66a;         /* custom property voor accent kleur */
+    --color-inactive: #E9E9E9;       /* custom property voor inactieve elementen */
     --color-inactive-dark: #6E6E6E;
 
-    --spacing-m: 1.875rem;
+    --spacing-m: 1.875rem;           /* custom property voor spacing */
     --spacing-s: calc(var(--spacing-m) / 2);
 
-    --font-size-xxl: 4rem;
+    --font-size-xxl: 4rem;           /* custom properties voor font-sizes */
     --font-size-xl: 3rem;
     --font-size-l: 2rem;
     --font-size-m: 1.5rem;
     --font-size-s: 1rem;
 
-    --animation-duration: 0.3s;
+    --animation-duration: 0.3s;      /* custom property voor animatie snelheid */
 }
 
-/* ============================= 
+/* =============================
    Algemene reset
+   (Cascade: basisregels voor alle elementen)
 ============================= */
 *,
 *::before,
@@ -31,23 +33,27 @@
     padding: 0;
 }
 
+/* Cascade en Custom Properties */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--color-primary);
-    background-color: var(--color-secondary);
+    font-family: Arial, Helvetica, sans-serif;  /* element selector, lage specificity */
+    color: var(--color-primary);                /* custom property */
+    background-color: var(--color-secondary);   /* custom property */
     line-height: 1.6;
-    padding: var(--spacing-m);
+    padding: var(--spacing-m);                  /* custom property */
 }
 
-/* ============================= 
+/* =============================
    Header
+   (Specificity: element + descendant selectors)
+   (Cascade: hover overschrijft link kleur)
+   (Custom Properties: kleuren)
 ============================= */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    background-color: var(--color-primary);
+    background-color: var(--color-primary); /* custom property */
 }
 
 header img { height: 60px; }
@@ -61,14 +67,12 @@ header nav ul {
 
 header nav ul li a {
     text-decoration: none;
-    color: var(--color-secondary);
+    color: var(--color-secondary);  /* custom property */
     font-weight: bold;
     transition: color 0.3s;
 }
 
-header nav ul li a:hover {
-    color: var(--color-accent);
-}
+header nav ul li a:hover { color: var(--color-accent); } /* cascade + custom property */
 
 header nav ul li input[type="search"] {
     padding: 6px 10px;
@@ -76,8 +80,11 @@ header nav ul li input[type="search"] {
     border: none;
 }
 
-/* ============================= 
+/* =============================
    Catalog Formulier
+   (Specificity: class selectors)
+   (Cascade: hover overschrijft basisbutton kleur)
+   (Custom Properties: kleuren en spacing)
 ============================= */
 .catalog-form {
     max-width: 700px;
@@ -88,15 +95,8 @@ header nav ul li input[type="search"] {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.catalog-form h1 {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.catalog-form p {
-    text-align: center;
-    margin-bottom: 20px;
-}
+.catalog-form h1 { text-align: center; margin-bottom: 10px; }
+.catalog-form p { text-align: center; margin-bottom: 20px; }
 
 .catalog-form form {
     display: flex;
@@ -106,7 +106,7 @@ header nav ul li input[type="search"] {
 
 .catalog-form label {
     font-weight: bold;
-    color: var(--color-primary);
+    color: var(--color-primary);   /* custom property */
 }
 
 .catalog-form input[type="text"],
@@ -115,38 +115,35 @@ header nav ul li input[type="search"] {
 .catalog-form textarea {
     padding: 10px;
     border-radius: 8px;
-    border: 1px solid var(--color-primary);
+    border: 1px solid var(--color-primary); /* custom property */
     width: 100%;
-    font-size: var(--font-size-s);
+    font-size: var(--font-size-s);           /* custom property */
 }
 
-.catalog-form textarea {
-    resize: vertical;
-}
+.catalog-form textarea { resize: vertical; }
 
 .catalog-form button[type="submit"] {
     padding: 12px;
     border-radius: 8px;
     border: none;
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
+    background-color: var(--color-primary); /* custom property */
+    color: var(--color-secondary);          /* custom property */
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .catalog-form button[type="submit"]:hover {
-    background-color: var(--color-accent);
+    background-color: var(--color-accent);  /* cascade + custom property */
 }
 
-
-/* ============================= 
+/* =============================
    Boekencatalogus
+   (Specificity: class selectors)
+   (Cascade: hover overschrijft basiskaart stijl)
+   (Custom Properties: kleuren)
 ============================= */
-.book-catalog {
-    max-width: 1200px;
-    margin: 60px auto;
-}
+.book-catalog { max-width: 1200px; margin: 60px auto; }
 
 .cards {
     display: flex;
@@ -156,7 +153,7 @@ header nav ul li input[type="search"] {
 }
 
 .card {
-    background-color: var(--color-secondary);
+    background-color: var(--color-secondary); /* custom property */
     border-radius: 12px;
     overflow: hidden;
     width: 100%;
@@ -167,8 +164,8 @@ header nav ul li input[type="search"] {
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+    transform: translateY(-8px);             /* cascade */
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);/* cascade */
 }
 
 .card h3 { margin-bottom: 6px; }
@@ -176,7 +173,7 @@ header nav ul li input[type="search"] {
 .card p em {
     font-style: italic;
     font-size: 0.9rem;
-    color: var(--color-inactive-dark);
+    color: var(--color-inactive-dark);      /* custom property */
     margin-bottom: 12px;
     display: block;
 }
@@ -198,12 +195,15 @@ header nav ul li input[type="search"] {
     font-size: 0.9rem;
 }
 
-/* ============================= 
+/* =============================
    Footer
+   (Specificity: class + element selectors)
+   (Cascade: hover overschrijft link kleur)
+   (Custom Properties: kleuren)
 ============================= */
 footer {
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
+    background-color: var(--color-primary);  /* custom property */
+    color: var(--color-secondary);           /* custom property */
     padding: 40px 20px;
     display: flex;
     flex-wrap: wrap;
@@ -224,10 +224,10 @@ footer ul {
 
 footer ul li a {
     text-decoration: none;
-    color: var(--color-secondary);
+    color: var(--color-secondary); /* custom property */
 }
 
-footer ul li a:hover { color: var(--color-accent); }
+footer ul li a:hover { color: var(--color-accent); } /* cascade + custom property */
 
 footer form {
     display: flex;
@@ -245,12 +245,12 @@ footer button {
     padding: 8px 12px;
     border-radius: 6px;
     border: none;
-    background-color: var(--color-accent);
-    color: var(--color-primary);
+    background-color: var(--color-accent); /* custom property */
+    color: var(--color-primary);           /* custom property */
     cursor: pointer;
 }
 
-footer button:hover { opacity: 0.9; }
+footer button:hover { opacity: 0.9; } /* cascade */
 
 .social-buttons {
     display: flex;
@@ -267,14 +267,15 @@ footer button:hover { opacity: 0.9; }
     text-decoration: none;
     font-weight: bold;
     transition: opacity 0.3s;
-    color: var(--color-primary);
-    background-color: var(--color-secondary);
+    color: var(--color-primary);      /* custom property */
+    background-color: var(--color-secondary); /* custom property */
 }
 
-.social-buttons a:hover { opacity: 0.8; }
+.social-buttons a:hover { opacity: 0.8; } /* cascade */
 
-/* ============================= 
+/* =============================
    Responsive
+   (Cascade: overschrijft basisregels bij schermbreedtes)
 ============================= */
 @media (max-width: 768px) {
     header { flex-direction: column; align-items: flex-start; }
@@ -288,5 +289,5 @@ footer button:hover { opacity: 0.9; }
 }
 
 @media (min-width: 900px) {
-    h1 { font-size: var(--font-size-xxl); }
+    h1 { font-size: var(--font-size-xxl); } /* cascade + custom property */
 }
