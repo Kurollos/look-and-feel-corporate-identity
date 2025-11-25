@@ -178,57 +178,75 @@ header nav ul li input[type="search"] {
    (Cascade: hover overschrijft basiskaart stijl)
    (Custom Properties: kleuren)
 ============================= */
-.book-catalog { max-width: 1200px; margin: 60px auto; }
-
 .cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 20px;
     justify-content: center;
 }
 
+/* Basiskaartstijl */
 .card {
-    background-color: var(--color-secondary); /* custom property */
     border-radius: 12px;
     overflow: hidden;
-    width: 100%;
-    max-width: 300px;
     padding: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    color: #ffffff; /* witte tekst voor leesbaarheid */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
+/* Afwisselende achtergrondkleuren en formaten */
+.card:nth-child(3n+1) { background-color: #0077b6; width: 250px; height: 250px; } /* vierkant */
+.card:nth-child(3n+2) { background-color: #023e8a; width: 300px; height: 200px; } /* rechthoek horizontaal */
+.card:nth-child(3n)   { background-color: #0096c7; width: 200px; height: 300px; } /* rechthoek verticaal */
+
+/* Hover-effect */
 .card:hover {
-    transform: translateY(-8px);             /* cascade */
-    box-shadow: 0 12px 20px rgba(0,0,0,0.15);/* cascade */
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
 }
 
-.card h3 { margin-bottom: 6px; }
-
-.card p em {
-    font-style: italic;
-    font-size: 0.9rem;
-    color: var(--color-inactive-dark);      /* custom property */
-    margin-bottom: 12px;
-    display: block;
-}
-
+/* Afbeelding */
 .card img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 8px;
     margin-bottom: 12px;
 }
 
-.card details summary {
-    cursor: pointer;
-    font-weight: bold;
-    margin-bottom: 8px;
+/* Titel altijd zichtbaar onder afbeelding */
+.card h3 {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 8px;
 }
 
-.card details p {
-    margin-bottom: 6px;
-    font-size: 0.9rem;
+/* Extra info en details verbergen voor focus op afbeelding + titel */
+.card p em,
+.card details {
+    display: none;
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card {
+        width: 90%;
+        height: auto;
+    }
+    .card:nth-child(3n+1),
+    .card:nth-child(3n+2),
+    .card:nth-child(3n) {
+        width: 90%;
+        height: auto;
+    }
+}
+
+
 
 /* =============================
    Footer
