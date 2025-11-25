@@ -92,6 +92,57 @@ a {
     gap: 0.5rem;
 }
 
+/* Hamburger knop */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #002646;
+  border-radius: 2px;
+}
+
+/* Menu standaard zichtbaar op desktop */
+nav.menu ul {
+  display: flex;
+  gap: 20px;
+}
+
+/* Mobiel: menu verbergen en hamburger tonen */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+  
+  nav.menu ul {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: white;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border-radius: 5px;
+  }
+
+  nav.menu ul.active {
+    display: flex;
+  }
+}
+
+
 a.button {
     width: max-content;
     padding: 1rem;
@@ -198,26 +249,32 @@ header nav ul li a:hover { color: var(--color-accent); } /* cascade & custom pro
 }
 
 .card {
-    background-color: var(--color-secondary);  /* custom property */
+    background-color: #0077b6;  /* blauw voor leesbaarheid */
     border-radius: 12px;
     overflow: hidden;
     padding: 20px;
     width: 100%;
-    max-width: 300px;
-    flex: 1 1 300px;
+    max-width: 300px;       
+    flex: 1 1 300px;        
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    color: #ffffff; /* witte tekst */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .card img {
     width: 100%;
     border-radius: 8px;
     margin-bottom: 12px;
+    object-fit: cover;
 }
 
 .card:hover {
-    transform: translateY(-8px) scale(1.03);  /* cascade */
-    box-shadow: 0 12px 20px rgba(0,0,0,0.15);  /* cascade */
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
 }
 
 .cards-container h2 {
@@ -225,6 +282,7 @@ header nav ul li a:hover { color: var(--color-accent); } /* cascade & custom pro
     margin-bottom: 20px;
     text-align: center;
 }
+
 
 /* =============================
    Footer
