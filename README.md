@@ -6,17 +6,21 @@ De instructie vind je in: [INSTRUCTIONS](https://github.com/fdnd-task/look-and-f
 
 
 # Titel
-<!-- Geef je project een titel en schrijf in één zin wat het is -->
+Look and feel embassy
 
 ## Beschrijving
-<!-- In de Beschrijving staat hoe je project er uit ziet, hoe het werkt en wat je er mee kan. -->
-<!-- Voeg een mooie poster visual toe 📸 -->
-<!-- Voeg een link toe naar Github Pages 🌐-->
+<img width="959" height="470" alt="image" src="https://github.com/user-attachments/assets/ae7cf5a7-c364-4135-a610-5d4bbdcd6181" />
+<img width="959" height="437" alt="image" src="https://github.com/user-attachments/assets/ff5959eb-4e33-4702-9604-bf21d4eea07d" />
+<img width="914" height="49" alt="image" src="https://github.com/user-attachments/assets/7f467230-4739-40f2-ab2e-73b80d41eff3" />
+https://kurollos.github.io/look-and-feel-corporate-identity/
+
+Deze Sprint gaat over de kleuren design van mijn site, Ik heb met mijn groepje samengewerkt aan het maken van een styleguide en die bij mijn site gezet. Deze site bestaat uit de homepage en de catalogs. in de homepage zie je navlinkjes en onderaan zie je kaartjes met linkjes waar er staat lees meer en er is ook een footer en bij de catalogs vind je een catalogsformulier en filterfunctie en kaarten catalogs.
 
 ## Kenmerken
-<!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met Javascript gedaan en hoe? Misschien heb je een framwork of library gebruikt? -->
+Ik heb mijn css styleguide van de styleguide repository in mijn css homepage en catalogs code gezet
 
 ## Bronnen
+https://kurollos.github.io/look-and-feel-corporate-identity/
 
 ## Licentie
 
