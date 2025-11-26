@@ -20,8 +20,7 @@ Deze Sprint gaat over de kleuren design van mijn site, Ik heb met mijn groepje s
 Ik heb mijn css styleguide van de styleguide repository in mijn css homepage en catalogs code gezet
 
 ## Bronnen
-https://kurollos.github.io/look-and-feel-corporate-identity/
-
+[(https://kurollos.github.io/look-and-feel-styleguide/styleguide-embassy-free-mind.html)](https://kurollos.github.io/look-and-feel-styleguide/styleguide-embassy-free-mind.html)
 ## Licentie
 
 This project is licensed under the terms of the [MIT license](./LICENSE).
