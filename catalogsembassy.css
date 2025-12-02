@@ -67,9 +67,9 @@ header nav ul {
 
 header nav ul li a {
     text-decoration: none;
-    color: var(--color-secondary);  /* custom property */
-    font-weight: bold;
-    transition: color 0.3s;
+    color: var(--color-secondary); /* custom property */
+    font-weight: 400; /* style guide */
+    transition: color var(--animation-duration);
 }
 
 header nav ul li a:hover { color: var(--color-accent); } /* cascade + custom property */
@@ -90,7 +90,7 @@ header nav ul li input[type="search"] {
     max-width: 700px;
     margin: 40px auto;
     padding: 30px;
-    background-color: #f4f4f4;
+    background-color: var(--color-inactive); /* custom property */
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
@@ -105,7 +105,7 @@ header nav ul li input[type="search"] {
 }
 
 .catalog-form label {
-    font-weight: bold;
+    font-weight: 400;   /* style guide */
     color: var(--color-primary);   /* custom property */
 }
 
@@ -128,52 +128,16 @@ header nav ul li input[type="search"] {
     border: none;
     background-color: var(--color-primary); /* custom property */
     color: var(--color-secondary);          /* custom property */
-    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color var(--animation-duration);
 }
 
 .catalog-form button[type="submit"]:hover {
     background-color: var(--color-accent);  /* cascade + custom property */
 }
 
-.filter-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 30px;
-    padding: 15px;
-    background-color: #f4f4f4;
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
-}
-
-.filter-bar input[type="text"],
-.filter-bar select {
-    padding: 8px 12px;
-    border-radius: 6px;
-    border: 1px solid var(--color-primary);
-    font-size: var(--font-size-s);
-}
-
-.filter-bar button {
-    padding: 8px 15px;
-    border-radius: 6px;
-    border: none;
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.filter-bar button:hover {
-    background-color: var(--color-accent);
-}
-
 /* =============================
-   Boekencatalogus
+   Cards
    (Specificity: class selectors)
    (Cascade: hover overschrijft basiskaart stijl)
    (Custom Properties: kleuren)
@@ -185,32 +149,17 @@ header nav ul li input[type="search"] {
     justify-content: center;
 }
 
-/* Basiskaartstijl */
 .card {
     border-radius: 12px;
     overflow: hidden;
     padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform var(--animation-duration) ease, box-shadow var(--animation-duration) ease;
     cursor: pointer;
-    color: #ffffff; /* witte tekst voor leesbaarheid */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
 }
 
-/* Afwisselende achtergrondkleuren en formaten */
-.card:nth-child(3n+1) { background-color: #0077b6; width: 250px; height: 250px; } /* vierkant */
-.card:nth-child(3n+2) { background-color: #023e8a; width: 300px; height: 200px; } /* rechthoek horizontaal */
-.card:nth-child(3n)   { background-color: #0096c7; width: 200px; height: 300px; } /* rechthoek verticaal */
-
-/* Hover-effect */
-.card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
-}
-
-/* Afbeelding */
 .card img {
     width: 100%;
     height: 100%;
@@ -219,34 +168,16 @@ header nav ul li input[type="search"] {
     margin-bottom: 12px;
 }
 
-/* Titel altijd zichtbaar onder afbeelding */
 .card h3 {
     text-align: center;
-    font-size: 1rem;
+    font-size: var(--font-size-s); /* style guide */
     margin-top: 8px;
 }
 
-/* Extra info en details verbergen voor focus op afbeelding + titel */
-.card p em,
-.card details {
-    display: none;
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
 }
-
-/* Responsive */
-@media (max-width: 768px) {
-    .card {
-        width: 90%;
-        height: auto;
-    }
-    .card:nth-child(3n+1),
-    .card:nth-child(3n+2),
-    .card:nth-child(3n) {
-        width: 90%;
-        height: auto;
-    }
-}
-
-
 
 /* =============================
    Footer
@@ -278,6 +209,8 @@ footer ul {
 footer ul li a {
     text-decoration: none;
     color: var(--color-secondary); /* custom property */
+    font-weight: 400; /* style guide */
+    font-size: var(--font-size-s);
 }
 
 footer ul li a:hover { color: var(--color-accent); } /* cascade + custom property */
@@ -288,43 +221,86 @@ footer form {
     gap: 10px;
 }
 
-footer input[type="email"] {
-    padding: 8px;
-    border-radius: 6px;
-    border: none;
-}
-
+footer input[type="email"],
 footer button {
-    padding: 8px 12px;
-    border-radius: 6px;
-    border: none;
-    background-color: var(--color-accent); /* custom property */
-    color: var(--color-primary);           /* custom property */
-    cursor: pointer;
+    font-size: var(--font-size-s);
+    font-weight: 400; /* style guide */
 }
 
-footer button:hover { opacity: 0.9; } /* cascade */
-
-.social-buttons {
-    display: flex;
-    gap: 15px;
-    margin-top: 10px;
-}
-
+/* Social buttons */
 .social-buttons a {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: opacity 0.3s;
+    font-size: var(--font-size-s);
+    font-weight: 400; /* style guide */
     color: var(--color-primary);      /* custom property */
     background-color: var(--color-secondary); /* custom property */
+    transition: opacity var(--animation-duration);
 }
 
-.social-buttons a:hover { opacity: 0.8; } /* cascade */
+.social-buttons a:hover { opacity: 0.8; }
+
+/* =============================
+   Nieuwsbrief (nieuw component)
+   Alleen toevoegen als nog niet gestyled in style guide
+============================= */
+section.newsletter {
+    padding: var(--spacing-m);
+    background-color: var(--color-inactive);
+    border-radius: 12px;
+    max-width: 600px;
+    margin: var(--spacing-m) auto;
+}
+
+section.newsletter h3 {
+    font-size: var(--font-size-m);
+    margin-bottom: var(--spacing-s);
+    color: var(--color-primary);
+}
+
+section.newsletter form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
+}
+
+section.newsletter label {
+    font-size: var(--font-size-s);
+    font-weight: 400; /* style guide */
+    color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+}
+
+section.newsletter input[type="email"],
+section.newsletter button[type="submit"] {
+    font-size: var(--font-size-s);
+}
+
+section.newsletter input[type="email"] {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-primary);
+    border-radius: 8px;
+    outline: none;
+    transition: border-color var(--animation-duration);
+}
+
+section.newsletter input[type="email"]:focus {
+    border-color: var(--color-accent);
+}
+
+section.newsletter button[type="submit"] {
+    padding: 0.8rem 1.2rem;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color var(--animation-duration);
+}
+
+section.newsletter button[type="submit"]:hover {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+}
 
 /* =============================
    Responsive
@@ -337,10 +313,6 @@ footer button:hover { opacity: 0.9; } /* cascade */
     footer { flex-direction: column; gap: 30px; }
 }
 
-@media (min-width: 481px) {
-    nav { flex-direction: row; gap: 0.5rem; }
-}
-
 @media (min-width: 900px) {
-    h1 { font-size: var(--font-size-xxl); } /* cascade + custom property */
+    h1 { font-size: var(--font-size-xxl); }
 }
