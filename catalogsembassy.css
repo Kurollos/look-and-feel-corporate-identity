@@ -3,11 +3,7 @@
    (Custom Properties)
 ============================= */
 :root {
-    --color-primary: #002646;        /* custom property voor primaire kleur */
-    --color-secondary: #ffffff;      /* custom property voor secundaire kleur */
-    --color-accent: #d8b66a;         /* custom property voor accent kleur */
-    --color-inactive: #E9E9E9;       /* custom property voor inactieve elementen */
-    --color-inactive-dark: #6E6E6E;
+   
 
     --spacing-m: 1.875rem;           /* custom property voor spacing */
     --spacing-s: calc(var(--spacing-m) / 2);
