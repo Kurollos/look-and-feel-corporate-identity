@@ -1,38 +1,35 @@
 /* =============================
    Fonts
-   (Stylesheet: externe font)
 ============================= */
 @font-face {
-    font-family: "Cinzel";                     /* custom font */
-    src: url("../assets/fonts/Cinzel-VariableFont_wght.ttf");  
+    font-family: "Cinzel";
+    src: url("../assets/fonts/Cinzel-VariableFont_wght.ttf");
 }
 
 /* =============================
    Root variabelen
-   (Custom Properties)
 ============================= */
 :root {
-    --color-primary: #002646;                  /* primaire kleur */
-    --color-secondary: #ffffff;                /* secundaire kleur */
-    --color-accent: #d8b66a;                   /* accent kleur */
-    --color-inactive: #E9E9E9;                 /* inactieve kleur */
-    --color-inactive-dark: #6E6E6E;            /* donkere inactieve kleur */
+    --color-primary: #002646;
+    --color-secondary: #ffffff;
+    --color-accent: #d8b66a;
+    --color-inactive: #E9E9E9;
+    --color-inactive-dark: #6E6E6E;
 
-    --spacing-m: 1.875rem;                     /* spacing */
-    --spacing-s: calc(var(--spacing-m) / 2);   /* spacing klein */
+    --spacing-m: 1.875rem;
+    --spacing-s: calc(var(--spacing-m) / 2);
 
-    --animation-duration: 0.3s;                /* animatie snelheid */
+    --animation-duration: 0.3s;
 
-    --font-size-xxl: 4rem;                     /* font-size XXL */
-    --font-size-xl: 3rem;                      /* font-size XL */
-    --font-size-l: 2rem;                       /* font-size L */
-    --font-size-m: 1.5rem;                     /* font-size M */
-    --font-size-s: 1rem;                       /* font-size S */
+    --font-size-xxl: 4rem;
+    --font-size-xl: 3rem;
+    --font-size-l: 2rem;
+    --font-size-m: 1.5rem;
+    --font-size-s: 1rem;
 }
 
 /* =============================
    Algemene reset
-   (Cascade: basisregels voor alle elementen)
 ============================= */
 *,
 *::before,
@@ -42,189 +39,194 @@
     padding: 0;
 }
 
-/* Cascade & Custom Properties */
 body {
-    font-family: Arial, Helvetica, sans-serif;  /* lage specificity */
-    color: var(--color-primary);                /* custom property */
-    background-color: var(--color-secondary);   /* custom property */
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--color-primary);
+    background-color: var(--color-secondary);
     line-height: 1.6;
-    padding-inline: var(--spacing-m);           /* custom property */
+    padding-inline: var(--spacing-m);
 }
 
 /* =============================
    Typografie
-   (Cascade & Specificity & Custom Properties)
 ============================= */
 h1 {
-    font-size: var(--font-size-xl);   /* custom property */
-    font-family: "Cinzel";            /* specifieke font */
+    font-size: var(--font-size-xl);
+    font-family: "Cinzel";
 }
+
 @media (min-width: 900px) {
-    h1 { font-size: var(--font-size-xxl); }   /* cascade via media query */
+    h1 { font-size: var(--font-size-xxl); }
 }
 
 h2 {
-    font-size: var(--font-size-l);    /* custom property */
+    font-size: var(--font-size-l);
     text-transform: uppercase;
     font-weight: 400;
 }
 
-h3 {
-    font-size: var(--font-size-m);    /* custom property */
-}
+h3 { font-size: var(--font-size-m); }
 
 p {
-    font-size: var(--font-size-s);    /* custom property */
+    font-size: var(--font-size-s);
     font-weight: 400;
     line-height: 1.4;
 }
 
 /* =============================
    Links & Buttons
-   (Specificity: class selectors)
-   (Custom Properties: kleuren, spacing, animatie)
 ============================= */
 a {
-    font-size: var(--font-size-s);           /* custom property */
+    font-size: var(--font-size-s);
     text-decoration: none;
-    color: var(--color-primary);            /* custom property */
+    color: var(--color-primary);
     display: grid;
     grid-template-columns: max-content min-content;
     gap: 0.5rem;
-}
 
-a.button {
-    width: max-content;
-    padding: 1rem;
-    border-radius: 100px;
-    border: 0;
-    gap: 1.5rem;
-    margin-block: var(--spacing-s);         /* custom property */
-    transition: all var(--animation-duration) ease; /* custom property */
-}
+    &.button {
+        width: max-content;
+        padding: 1rem;
+        border-radius: 100px;
+        border: 0;
+        gap: 1.5rem;
+        margin-block: var(--spacing-s);
+        transition: all var(--animation-duration) ease;
 
-a.button.primary {
-    background-color: var(--color-primary);   /* custom property */
-    color: var(--color-secondary);            /* custom property */
-}
+        &.primary {
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+        }
 
-a.button.secondary {
-    background-color: var(--color-secondary);
-    border: 1px solid var(--color-primary);   /* custom property */
+        &.secondary {
+            background-color: var(--color-secondary);
+            border: 1px solid var(--color-primary);
+        }
+    }
 }
 
 /* =============================
-   Header component
-   (Specificity: element + descendant selectors)
-   (Cascade: hover overschrijft link kleur)
-   (Custom Properties: kleuren)
+   Header
 ============================= */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    background-color: var(--color-primary);  /* custom property */
+    background-color: var(--color-primary);
     border-bottom: 2px solid #eaeaea;
-}
 
-header img { height: 60px; }
+    img { height: 60px; }
 
-header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
+    nav {
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
 
-header nav ul li a {
-    text-decoration: none;
-    color: var(--color-secondary);           /* custom property */
-    font-weight: bold;
-    transition: color var(--animation-duration);
-}
+            li {
+                a {
+                    text-decoration: none;
+                    color: var(--color-secondary);
+                    font-weight: bold;
+                    transition: color var(--animation-duration);
 
-header nav ul li a:hover {
-    color: var(--color-accent);              /* cascade + custom property */
-}
+                    &:hover { color: var(--color-accent); }
+                }
+            }
+        }
+    }
 
-/* Hamburger knop voor mobiel */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.hamburger span {
-    display: block;
-    height: 3px;
-    width: 100%;
-    background-color: var(--color-primary);  /* custom property */
-    border-radius: 2px;
-}
-
-/* Mobiele menu weergave */
-@media (max-width: 768px) {
-    header { flex-direction: column; align-items: flex-start; }
-    header nav ul { flex-direction: column; gap: 10px; }
-    .hamburger { display: flex; }
-    nav.menu ul {
+    .hamburger {
         display: none;
         flex-direction: column;
-        gap: 10px;
-        background-color: var(--color-secondary); /* custom property */
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        padding: 10px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        border-radius: 5px;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--color-primary);
+            border-radius: 2px;
+        }
     }
-    nav.menu ul.active { display: flex; }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+
+        nav ul {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .hamburger { display: flex; }
+
+        &.menu ul {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            background-color: var(--color-secondary);
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            border-radius: 5px;
+
+            &.active { display: flex; }
+        }
+    }
 }
 
 /* =============================
-   Hero / Slideshow component
-   (Specificity: class selectors)
-   (Cascade: nth-child overschrijft animatie)
-   (Custom Properties: kleuren)
+   Hero / Slideshow
 ============================= */
 .hero {
     position: relative;
     width: 100%;
     height: 400px;
     overflow: hidden;
-}
 
-.hero .slideshow {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
+    .slideshow {
+        position: relative;
+        width: 100%;
+        height: 100%;
 
-.hero .slideshow figure {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    opacity: 0;
-    animation: slideAnimation 12s infinite;
-}
+        figure {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            opacity: 0;
+            animation: slideAnimation 12s infinite;
 
-.hero .slideshow figure:nth-child(1) { animation-delay: 0s; }
-.hero .slideshow figure:nth-child(2) { animation-delay: 4s; }
-.hero .slideshow figure:nth-child(3) { animation-delay: 8s; }
+            &:nth-child(1) { animation-delay: 0s; }
+            &:nth-child(2) { animation-delay: 4s; }
+            &:nth-child(3) { animation-delay: 8s; }
 
-.hero .slideshow img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .hero-text {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: var(--color-secondary);
+        text-shadow: 0 0 10px rgba(0,0,0,0.7);
+    }
 }
 
 @keyframes slideAnimation {
@@ -235,20 +237,8 @@ header nav ul li a:hover {
     100% { opacity: 0; }
 }
 
-.hero .hero-text {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: var(--color-secondary);  /* custom property */
-    text-shadow: 0 0 10px rgba(0,0,0,0.7);
-}
-
 /* =============================
-   Cards component
-   (Specificity: class selectors)
-   (Cascade: hover overschrijft basis .card)
-   (Custom Properties: kleuren)
-   (Geneste selectors + media queries)
+   Cards
 ============================= */
 .cards-container {
     display: flex;
@@ -256,165 +246,141 @@ header nav ul li a:hover {
     gap: 20px;
     justify-content: center;
     padding: 40px 0;
-}
 
-.cards-container h2 {
-    width: 100%;
-    margin-bottom: 20px;
-    text-align: center;
-}
+    h2 {
+        width: 100%;
+        margin-bottom: 20px;
+        text-align: center;
+    }
 
-.cards-container .card {
-    border-radius: 12px;
-    overflow: hidden;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    color: var(--color-secondary);          /* custom property */
-    transition: transform var(--animation-duration) ease, box-shadow var(--animation-duration) ease;
-    cursor: pointer;
-}
+    .card {
+        border-radius: 12px;
+        overflow: hidden;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        color: var(--color-secondary);
+        transition: transform var(--animation-duration) ease, box-shadow var(--animation-duration) ease;
+        cursor: pointer;
 
-.cards-container .card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 12px;
-}
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
 
-.cards-container .card h3 {
-    text-align: center;
-    font-size: var(--font-size-s);           /* custom property */
-    margin-top: 8px;
-}
+        h3 { text-align: center; font-size: var(--font-size-s); }
 
-.cards-container .card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
-}
+        &:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
 
-.cards-container .card:nth-child(3n+1) { background-color: #0077b6; width: 250px; height: 250px; }
-.cards-container .card:nth-child(3n+2) { background-color: #023e8a; width: 300px; height: 200px; }
-.cards-container .card:nth-child(3n)   { background-color: #0096c7; width: 200px; height: 300px; }
+        &:nth-child(3n+1) { background-color: #0077b6; width: 250px; height: 250px; }
+        &:nth-child(3n+2) { background-color: #023e8a; width: 300px; height: 200px; }
+        &:nth-child(3n)   { background-color: #0096c7; width: 200px; height: 300px; }
+    }
 
-@media (max-width: 768px) {
-    .cards-container { flex-direction: column; padding: 20px 0; }
-    .cards-container .card { width: 90%; height: auto; }
+    @media (max-width: 768px) {
+        flex-direction: column;
+        padding: 20px 0;
+
+        .card { width: 90%; height: auto; }
+    }
 }
 
 /* =============================
-   Footer component
-   (Specificity: class + element selectors)
-   (Cascade: hover overschrijft link kleur)
-   (Custom Properties: kleuren)
+   Footer
 ============================= */
 footer {
-    background-color: var(--color-primary);     /* custom property */
-    color: var(--color-secondary);              /* custom property */
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
     padding: 40px 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: space-between;
-}
 
-footer section { flex: 1 1 200px; }
+    section { flex: 1 1 200px; }
 
-footer h3 { margin-bottom: 10px; font-size: var(--font-size-m); }
+    h3 { margin-bottom: 10px; font-size: var(--font-size-m); }
 
-footer ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
 
-footer ul li a {
-    text-decoration: none;
-    color: var(--color-secondary);           /* custom property */
-    transition: color var(--animation-duration);
-}
+        li a {
+            text-decoration: none;
+            color: var(--color-secondary);
+            transition: color var(--animation-duration);
 
-footer ul li a:hover {
-    color: var(--color-accent);              /* cascade + custom property */
-}
+            &:hover { color: var(--color-accent); }
+        }
+    }
 
-footer form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
 
-footer input[type="email"] {
-    padding: 8px 12px;
-    border-radius: 6px;
-    border: 1px solid var(--color-secondary);
-    outline: none;
-    font-size: var(--font-size-s);
-    transition: border-color var(--animation-duration);
-}
+        input[type="email"] {
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--color-secondary);
+            outline: none;
+            font-size: var(--font-size-s);
+            transition: border-color var(--animation-duration);
 
-footer input[type="email"]:focus { border-color: var(--color-accent); }
+            &:focus { border-color: var(--color-accent); }
+        }
 
-footer button[type="submit"] {
-    padding: 8px 12px;
-    border-radius: 6px;
-    border: none;
-    background-color: var(--color-accent);
-    color: var(--color-primary);
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color var(--animation-duration), color var(--animation-duration);
-}
+        button[type="submit"] {
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: none;
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color var(--animation-duration), color var(--animation-duration);
 
-footer button[type="submit"]:hover {
-    background-color: var(--color-secondary);
-    color: var(--color-primary);
-}
+            &:hover {
+                background-color: var(--color-secondary);
+                color: var(--color-primary);
+            }
+        }
+    }
 
-/* Social buttons */
-.social-buttons {
-    display: flex;
-    gap: 15px;
-    margin-top: 10px;
-}
+    .social-buttons {
+        display: flex;
+        gap: 15px;
+        margin-top: 10px;
 
-.social-buttons a {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color var(--animation-duration), color var(--animation-duration);
-    color: var(--color-primary);                /* custom property */
-    background-color: var(--color-secondary);   /* custom property */
-}
+        a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color var(--animation-duration), color var(--animation-duration);
+            color: var(--color-primary);
+            background-color: var(--color-secondary);
 
-.social-buttons a:hover {
-    background-color: var(--color-accent);      /* cascade + custom property */
-    color: var(--color-secondary);
-}
+            &.facebook, &.instagram, &.youtube { background-color: var(--color-secondary); }
 
-.social-buttons a.facebook,
-.social-buttons a.instagram,
-.social-buttons a.youtube { background-color: var(--color-secondary); }
-
-.social-buttons a:hover { opacity: 0.8; }
-
-/* =============================
-   Responsive images & media queries
-   (Cascade: overschrijft basisregels bij schermbreedtes)
-============================= */
-@media (min-width: 769px) {
-    section img { width: 70%; }
-}
-
-@media (prefers-color-scheme: dark) {
-    img { opacity: 0.75; transition: opacity 0.5s ease-in-out; }
-    img:hover { opacity: 1; }
+            &:hover {
+                background-color: var(--color-accent);
+                color: var(--color-secondary);
+                opacity: 0.8;
+            }
+        }
+    }
 }
