@@ -82,6 +82,74 @@ header {
 
 
 /* =============================
+   Catalog Formulier component
+============================= */
+.catalog-form {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--color-inactive);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Titel & intro */
+.catalog-form h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.catalog-form p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form layout */
+.catalog-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Labels */
+.catalog-form label {
+    font-weight: 400;
+    color: var(--color-primary);
+}
+
+/* Inputs */
+.catalog-form input[type="text"],
+.catalog-form input[type="number"],
+.catalog-form select,
+.catalog-form textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--color-primary);
+    width: 100%;
+    font-size: var(--font-size-s);
+}
+
+.catalog-form textarea {
+    resize: vertical;
+}
+
+/* Submit button */
+.catalog-form button[type="submit"] {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    cursor: pointer;
+    transition: background-color var(--animation-duration);
+}
+
+.catalog-form button[type="submit"]:hover {
+    background-color: var(--color-accent);
+}
+
+
+/* =============================
    Cards component
 ============================= */
 .cards {
