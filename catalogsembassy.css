@@ -1,26 +1,23 @@
 /* =============================
    Root Variabelen
+   (Custom Properties)
 ============================= */
 :root {
-    --spacing-m: 1.875rem;
-    --spacing-s: calc(var(--spacing-m) / 2);
+    --spacing-m: 1.875rem;                     /* custom property voor spacing */
+    --spacing-s: calc(var(--spacing-m) / 2);   /* custom property voor kleine spacing */
 
-    --font-size-xxl: 4rem;
-    --font-size-xl: 3rem;
-    --font-size-l: 2rem;
-    --font-size-m: 1.5rem;
-    --font-size-s: 1rem;
+    --font-size-xxl: 4rem;                     /* custom property voor XXL font-size */
+    --font-size-xl: 3rem;                      /* custom property voor XL font-size */
+    --font-size-l: 2rem;                       /* custom property voor L font-size */
+    --font-size-m: 1.5rem;                     /* custom property voor M font-size */
+    --font-size-s: 1rem;                       /* custom property voor S font-size */
 
-    --animation-duration: 0.3s;
-
-    --color-primary: #002646;
-    --color-secondary: #ffffff;
-    --color-accent: #d8b66a;
-    --color-inactive: #E9E9E9;
+    --animation-duration: 0.3s;                /* custom property voor animatie snelheid */
 }
 
 /* =============================
    Algemene reset
+   (Cascade: basisregels voor alle elementen)
 ============================= */
 *,
 *::before,
@@ -32,278 +29,228 @@
 
 /* =============================
    Body
+   (Cascade & Custom Properties)
 ============================= */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--color-primary);
-    background-color: var(--color-secondary);
+    font-family: Arial, Helvetica, sans-serif;  /* element selector, lage specificity */
+    color: var(--color-primary);                /* custom property */
+    background-color: var(--color-secondary);   /* custom property */
     line-height: 1.6;
-    padding: var(--spacing-m);
+    padding: var(--spacing-m);                  /* custom property */
 }
 
 /* =============================
    Header component
+   (Specificity: element + descendant selectors)
+   (Cascade: hover overschrijft link kleur)
+   (Custom Properties: kleuren)
 ============================= */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    background-color: var(--color-primary);
-
-    img { height: 60px; }
-
-    nav {
-        ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-            align-items: center;
-
-            li {
-                a {
-                    text-decoration: none;
-                    color: var(--color-secondary);
-                    font-weight: 400;
-                    transition: color var(--animation-duration);
-
-                    &:hover { color: var(--color-accent); }
-                }
-
-                input[type="search"] {
-                    padding: 6px 10px;
-                    border-radius: 6px;
-                    border: none;
-                }
-            }
-        }
-    }
+    background-color: var(--color-primary);    /* custom property */
 }
 
+header img { height: 60px; }
 
-/* =============================
-   Catalog Formulier component
-============================= */
-.catalog-form {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: var(--color-inactive);
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-/* Titel & intro */
-.catalog-form h1 {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.catalog-form p {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Form layout */
-.catalog-form form {
+header nav ul {
+    list-style: none;
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    gap: 30px;
+    align-items: center;
 }
 
-/* Labels */
-.catalog-form label {
-    font-weight: 400;
-    color: var(--color-primary);
+header nav ul li a {
+    text-decoration: none;
+    color: var(--color-secondary);             /* custom property */
+    font-weight: 400;                           /* style guide */
+    transition: color var(--animation-duration);
 }
 
-/* Inputs */
-.catalog-form input[type="text"],
-.catalog-form input[type="number"],
-.catalog-form select,
-.catalog-form textarea {
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid var(--color-primary);
-    width: 100%;
-    font-size: var(--font-size-s);
+header nav ul li a:hover {
+    color: var(--color-accent);                /* cascade + custom property */
 }
 
-.catalog-form textarea {
-    resize: vertical;
-}
-
-/* Submit button */
-.catalog-form button[type="submit"] {
-    padding: 12px;
-    border-radius: 8px;
+header nav ul li input[type="search"] {
+    padding: 6px 10px;
+    border-radius: 6px;
     border: none;
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
-    cursor: pointer;
-    transition: background-color var(--animation-duration);
-}
-
-.catalog-form button[type="submit"]:hover {
-    background-color: var(--color-accent);
 }
 
 
 /* =============================
    Cards component
+   (Specificity: class selectors)
+   (Cascade: hover overschrijft basiskaart stijl)
+   (Custom Properties: kleuren)
 ============================= */
 .cards {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+}
 
-    .card {
-        border-radius: 12px;
-        overflow: hidden;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        transition: transform var(--animation-duration) ease, box-shadow var(--animation-duration) ease;
-        cursor: pointer;
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform var(--animation-duration) ease, box-shadow var(--animation-duration) ease;
+    cursor: pointer;
+}
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 12px;
-        }
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
 
-        h3 {
-            text-align: center;
-            font-size: var(--font-size-s);
-            margin-top: 8px;
-        }
+.card h3 {
+    text-align: center;
+    font-size: var(--font-size-s);             /* style guide */
+    margin-top: 8px;
+}
 
-        &:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
-        }
-    }
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
 }
 
 /* =============================
    Footer component
+   (Specificity: class + element selectors)
+   (Cascade: hover overschrijft link kleur)
+   (Custom Properties: kleuren)
 ============================= */
 footer {
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
+    background-color: var(--color-primary);    /* custom property */
+    color: var(--color-secondary);             /* custom property */
     padding: 40px 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
     justify-content: space-between;
-
-    section { flex: 1 1 200px; }
-
-    h3 { margin-bottom: 10px; }
-
-    ul {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-
-        li a {
-            text-decoration: none;
-            color: var(--color-secondary);
-            font-weight: 400;
-            font-size: var(--font-size-s);
-
-            &:hover { color: var(--color-accent); }
-        }
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-
-        input[type="email"],
-        button {
-            font-size: var(--font-size-s);
-            font-weight: 400;
-        }
-    }
-
-    .social-buttons {
-        a {
-            font-size: var(--font-size-s);
-            font-weight: 400;
-            color: var(--color-primary);
-            background-color: var(--color-secondary);
-            transition: opacity var(--animation-duration);
-
-            &:hover { opacity: 0.8; }
-        }
-    }
 }
+
+footer section { flex: 1 1 200px; }
+
+footer h3 { margin-bottom: 10px; }
+
+footer ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: var(--color-secondary);            /* custom property */
+    font-weight: 400;                          /* style guide */
+    font-size: var(--font-size-s);
+}
+
+footer ul li a:hover {
+    color: var(--color-accent);               /* cascade + custom property */
+}
+
+footer form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+footer input[type="email"],
+footer button {
+    font-size: var(--font-size-s);
+    font-weight: 400;                          /* style guide */
+}
+
+/* Social buttons component */
+.social-buttons a {
+    font-size: var(--font-size-s);
+    font-weight: 400;                          /* style guide */
+    color: var(--color-primary);               /* custom property */
+    background-color: var(--color-secondary);  /* custom property */
+    transition: opacity var(--animation-duration);
+}
+
+.social-buttons a:hover { opacity: 0.8; }
 
 /* =============================
    Nieuwsbrief component
+   (Nieuw component, FDND-style)
 ============================= */
 section.newsletter {
     padding: var(--spacing-m);
-    background-color: var(--color-inactive);
+    background-color: var(--color-inactive);   /* custom property */
     border-radius: 12px;
     max-width: 600px;
     margin: var(--spacing-m) auto;
+}
 
-    h3 {
-        font-size: var(--font-size-m);
-        margin-bottom: var(--spacing-s);
-        color: var(--color-primary);
-    }
+section.newsletter h3 {
+    font-size: var(--font-size-m);
+    margin-bottom: var(--spacing-s);
+    color: var(--color-primary);
+}
 
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-s);
+section.newsletter form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
+}
 
-        label {
-            font-size: var(--font-size-s);
-            font-weight: 400;
-            color: var(--color-primary);
-            display: flex;
-            flex-direction: column;
-        }
+section.newsletter label {
+    font-size: var(--font-size-s);
+    font-weight: 400;                           /* style guide */
+    color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+}
 
-        input[type="email"] {
-            padding: 0.75rem 1rem;
-            border: 1px solid var(--color-primary);
-            border-radius: 8px;
-            outline: none;
-            transition: border-color var(--animation-duration);
+section.newsletter input[type="email"],
+section.newsletter button[type="submit"] {
+    font-size: var(--font-size-s);
+}
 
-            &:focus { border-color: var(--color-accent); }
-        }
+section.newsletter input[type="email"] {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-primary);    /* custom property */
+    border-radius: 8px;
+    outline: none;
+    transition: border-color var(--animation-duration);
+}
 
-        button[type="submit"] {
-            padding: 0.8rem 1.2rem;
-            background-color: var(--color-primary);
-            color: var(--color-secondary);
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color var(--animation-duration);
+section.newsletter input[type="email"]:focus {
+    border-color: var(--color-accent);
+}
 
-            &:hover {
-                background-color: var(--color-accent);
-                color: var(--color-primary);
-            }
-        }
-    }
+section.newsletter button[type="submit"] {
+    padding: 0.8rem 1.2rem;
+    background-color: var(--color-primary);    /* custom property */
+    color: var(--color-secondary);             /* custom property */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color var(--animation-duration);
+}
+
+section.newsletter button[type="submit"]:hover {
+    background-color: var(--color-accent);     /* cascade + custom property */
+    color: var(--color-primary);
 }
 
 /* =============================
    Responsive
+   (Cascade: overschrijft basisregels bij schermbreedtes)
 ============================= */
 @media (max-width: 768px) {
     header { flex-direction: column; align-items: flex-start; }
