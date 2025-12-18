@@ -79,6 +79,94 @@ header nav ul li input[type="search"] {
     border: none;
 }
 
+/* =============================
+   Catalog Formulier
+============================= */
+.catalog-form {
+    max-width: 700px;
+    margin: var(--spacing-m) auto;
+    padding: var(--spacing-m);
+    background-color: var(--color-inactive);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Titel & intro */
+.catalog-form h1 {
+    text-align: center;
+    font-size: var(--font-size-l);
+    margin-bottom: var(--spacing-s);
+    color: var(--color-primary);
+}
+
+.catalog-form p {
+    text-align: center;
+    font-size: var(--font-size-s);
+    margin-bottom: var(--spacing-m);
+}
+
+/* Form layout */
+.catalog-form form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
+}
+
+/* Labels */
+.catalog-form label {
+    font-weight: 400;
+    font-size: var(--font-size-s);
+    color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Inputs */
+.catalog-form input[type="text"],
+.catalog-form input[type="number"],
+.catalog-form input[type="email"],
+.catalog-form select,
+.catalog-form textarea {
+    padding: 0.75rem 1rem;
+    font-size: var(--font-size-s);
+    border-radius: 8px;
+    border: 1px solid var(--color-primary);
+    outline: none;
+    transition: border-color var(--animation-duration);
+}
+
+.catalog-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Focus state */
+.catalog-form input:focus,
+.catalog-form select:focus,
+.catalog-form textarea:focus {
+    border-color: var(--color-accent);
+}
+
+/* Submit button */
+.catalog-form button[type="submit"] {
+    margin-top: var(--spacing-s);
+    padding: 0.9rem;
+    font-size: var(--font-size-s);
+    font-weight: 400;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    cursor: pointer;
+    transition: background-color var(--animation-duration);
+}
+
+.catalog-form button[type="submit"]:hover {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+}
+
 
 /* =============================
    Cards component
