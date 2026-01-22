@@ -3,17 +3,25 @@
    (Custom Properties)
 ============================= */
 :root {
-    --spacing-m: 1.875rem;                     /* custom property voor spacing */
-    --spacing-s: calc(var(--spacing-m) / 2);   /* custom property voor kleine spacing */
+  --spacing-m: 1.875rem;                           /* custom property voor spacing */
+  --spacing-s: calc(var(--spacing-m) / 2);         /* custom property voor spacing */
 
-    --font-size-xxl: 4rem;                     /* custom property voor XXL font-size */
-    --font-size-xl: 3rem;                      /* custom property voor XL font-size */
-    --font-size-l: 2rem;                       /* custom property voor L font-size */
-    --font-size-m: 1.5rem;                     /* custom property voor M font-size */
-    --font-size-s: 1rem;                       /* custom property voor S font-size */
 
-    --animation-duration: 0.3s;                /* custom property voor animatie snelheid */
+  --font-size-xxl: 4rem;                           /* custom property voor XXL font-size */
+  --font-size-xl: 3rem;                            /* custom property voor XL font-size */
+  --font-size-l: 2rem;                             /* custom property voor L font-size */
+  --font-size-m: 1.5rem;                           /* custom property voor M font-size */
+  --font-size-s: 1rem;                             /* custom property voor S font-size */
+
+
+  --animation-duration: 0.3s;                      /* custom property voor animatie snelheid */
+  --color-primary: #002646;
+  --color-secondary: #ffffff;
+  --color-accent: #d8b66a;
+  --color-inactive: #E9E9E9;
+  --color-inactive-dark: #6E6E6E;
 }
+
 
 /* =============================
    Algemene reset
@@ -22,22 +30,23 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
 
 /* =============================
    Body
-   (Cascade & Custom Properties)
 ============================= */
 body {
-    font-family: Arial, Helvetica, sans-serif;  /* element selector, lage specificity */
-    color: var(--color-primary);                /* custom property */
-    background-color: var(--color-secondary);   /* custom property */
-    line-height: 1.6;
-    padding: var(--spacing-m);                  /* custom property */
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-primary);
+  background-color: var(--color-secondary);
+  line-height: 1.6;
+  padding: var(--spacing-m);
 }
+
 
 /* =============================
    Header component
@@ -46,125 +55,144 @@ body {
    (Custom Properties: kleuren)
 ============================= */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    background-color: var(--color-primary);    /* custom property */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  background-color: var(--color-primary);  /* custom property */
+
+
+  img { height: 60px; }
+
+
+  nav {
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      align-items: center;
+
+
+      li {
+        a {
+          text-decoration: none;
+          color: var(--color-secondary);  /* custom property */
+          font-weight: 400;               /* style guide */
+          transition: color var(--animation-duration);
+
+
+          &:hover { color: var(--color-accent); }   /* cascade + custom */
+        }
+
+
+
+        input[type="search"] {
+          padding: 6px 10px;
+          border-radius: 6px;
+          border: none;
+        }
+      }
+    }
+  }
+
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+
+
+    nav ul {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
 }
 
-header img { height: 60px; }
-
-header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    align-items: center;
-}
-
-header nav ul li a {
-    text-decoration: none;
-    color: var(--color-secondary);             /* custom property */
-    font-weight: 400;                           /* style guide */
-    transition: color var(--animation-duration);
-}
-
-header nav ul li a:hover {
-    color: var(--color-accent);                /* cascade + custom property */
-}
-
-header nav ul li input[type="search"] {
-    padding: 6px 10px;
-    border-radius: 6px;
-    border: none;
-}
 
 /* =============================
    Catalog Formulier
 ============================= */
 .catalog-form {
-    max-width: 700px;
-    margin: var(--spacing-m) auto;
-    padding: var(--spacing-m);
-    background-color: var(--color-inactive);
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
+  max-width: 700px;
+  margin: var(--spacing-m) auto;
+  padding: var(--spacing-m);
+  background-color: var(--color-inactive);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 
-/* Titel & intro */
-.catalog-form h1 {
+
+  h1 {
     text-align: center;
     font-size: var(--font-size-l);
     margin-bottom: var(--spacing-s);
     color: var(--color-primary);
-}
+  }
 
-.catalog-form p {
+
+  p {
     text-align: center;
     font-size: var(--font-size-s);
     margin-bottom: var(--spacing-m);
-}
+  }
 
-/* Form layout */
-.catalog-form form {
+
+  form {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-s);
-}
 
-/* Labels */
-.catalog-form label {
-    font-weight: 400;
-    font-size: var(--font-size-s);
-    color: var(--color-primary);
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
 
-/* Inputs */
-.catalog-form input[type="text"],
-.catalog-form input[type="number"],
-.catalog-form input[type="email"],
-.catalog-form select,
-.catalog-form textarea {
-    padding: 0.75rem 1rem;
-    font-size: var(--font-size-s);
-    border-radius: 8px;
-    border: 1px solid var(--color-primary);
-    outline: none;
-    transition: border-color var(--animation-duration);
-}
+    label {
+      font-weight: 400;
+      font-size: var(--font-size-s);
+      color: var(--color-primary);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
 
-.catalog-form textarea {
-    resize: vertical;
-    min-height: 120px;
-}
 
-/* Focus state */
-.catalog-form input:focus,
-.catalog-form select:focus,
-.catalog-form textarea:focus {
-    border-color: var(--color-accent);
-}
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    select,
+    textarea {
+      padding: 0.75rem 1rem;
+      font-size: var(--font-size-s);
+      border-radius: 8px;
+      border: 1px solid var(--color-primary);
+      outline: none;
+      transition: border-color var(--animation-duration);
+    }
 
-/* Submit button */
-.catalog-form button[type="submit"] {
-    margin-top: var(--spacing-s);
-    padding: 0.9rem;
-    font-size: var(--font-size-s);
-    font-weight: 400;
-    border: none;
-    border-radius: 8px;
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
-    cursor: pointer;
-    transition: background-color var(--animation-duration);
-}
 
-.catalog-form button[type="submit"]:hover {
-    background-color: var(--color-accent);
-    color: var(--color-primary);
+    textarea { resize: vertical; min-height: 120px; }
+
+
+    input:focus,
+    select:focus,
+    textarea:focus { border-color: var(--color-accent); }
+
+
+    button[type="submit"] {
+      margin-top: var(--spacing-s);
+      padding: 0.9rem;
+      font-size: var(--font-size-s);
+      font-weight: 400;
+      border: none;
+      border-radius: 8px;
+      background-color: var(--color-primary);
+      color: var(--color-secondary);
+      cursor: pointer;
+      transition: background-color var(--animation-duration);
+
+
+      &:hover {
+        background-color: var(--color-accent);
+        color: var(--color-primary);
+      }
+    }
+  }
 }
 
 
@@ -175,13 +203,13 @@ header nav ul li input[type="search"] {
    (Custom Properties: kleuren)
 ============================= */
 .cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 
-.card {
+
+  .card {
     border-radius: 12px;
     overflow: hidden;
     padding: 20px;
@@ -190,26 +218,37 @@ header nav ul li input[type="search"] {
     align-items: center;
     transition: transform var(--animation-duration) ease, box-shadow var(--animation-duration) ease;
     cursor: pointer;
+
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+
+    h3 {
+      text-align: center;
+      font-size: var(--font-size-s);                        /* style guide */
+      margin-top: 8px;
+    }
+
+
+    &:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+    }
+  }
+
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
-.card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 12px;
-}
-
-.card h3 {
-    text-align: center;
-    font-size: var(--font-size-s);             /* style guide */
-    margin-top: 8px;
-}
-
-.card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
-}
 
 /* =============================
    Footer component
@@ -218,135 +257,183 @@ header nav ul li input[type="search"] {
    (Custom Properties: kleuren)
 ============================= */
 footer {
-    background-color: var(--color-primary);    /* custom property */
-    color: var(--color-secondary);             /* custom property */
-    padding: 40px 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: space-between;
-}
+  background-color: var(--color-primary);                  /* custom property */
+  color: var(--color-secondary);                           /* custom property */
+  padding: 40px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
 
-footer section { flex: 1 1 200px; }
 
-footer h3 { margin-bottom: 10px; }
+  section { flex: 1 1 200px; }
 
-footer ul {
+
+  h3 { margin-bottom: 10px; }
+
+
+  ul {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
 
-footer ul li a {
-    text-decoration: none;
-    color: var(--color-secondary);            /* custom property */
-    font-weight: 400;                          /* style guide */
-    font-size: var(--font-size-s);
-}
 
-footer ul li a:hover {
-    color: var(--color-accent);               /* cascade + custom property */
-}
+    li {
+      a {
+        text-decoration: none;
+        color: var(--color-secondary);                          /* custom property */
+        font-weight: 400;                                        /* style guide */
+        font-size: var(--font-size-s);
 
-footer form {
+
+        &:hover { color: var(--color-accent); }                    /* cascade + custom property */
+      }
+    }
+  }
+
+
+  form {
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+
+    input[type="email"] {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--color-primary);
+      border-radius: 8px;
+      outline: none;
+      font-size: var(--font-size-s);
+      transition: border-color var(--animation-duration);
+
+
+      &:focus { border-color: var(--color-accent); }
+    }
+
+
+    button[type="submit"] {
+      padding: 0.8rem 1.2rem;
+      background-color: var(--color-primary);
+      color: var(--color-secondary);                   /* custom property */
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color var(--animation-duration);
+
+
+      &:hover {
+        background-color: var(--color-accent);
+        color: var(--color-primary);
+      }
+    }
+  }
+
+
+  /* Social buttons component */
+  .social-buttons {
+    display: flex;
+    gap: 8px;
+
+
+    a {
+      font-size: var(--font-size-s);
+      font-weight: 400;                                /* style guide */
+      color: var(--color-primary);                     /* custom property */
+      background-color: var(--color-secondary);        /* custom property */
+      padding: 8px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: opacity var(--animation-duration);
+
+
+      &:hover { opacity: 0.8; }
+
+
+      &.facebook, &.instagram, &.youtube {
+        background-color: var(--color-secondary);
+      }
+    }
+  }
+
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 30px;
+  }
 }
 
-footer input[type="email"],
-footer button {
-    font-size: var(--font-size-s);
-    font-weight: 400;                          /* style guide */
-}
-
-/* Social buttons component */
-.social-buttons a {
-    font-size: var(--font-size-s);
-    font-weight: 400;                          /* style guide */
-    color: var(--color-primary);               /* custom property */
-    background-color: var(--color-secondary);  /* custom property */
-    transition: opacity var(--animation-duration);
-}
-
-.social-buttons a:hover { opacity: 0.8; }
 
 /* =============================
-   Nieuwsbrief component
+   Nieuwsbrief component 
    (Nieuw component, FDND-style)
 ============================= */
 section.newsletter {
-    padding: var(--spacing-m);
-    background-color: var(--color-inactive);   /* custom property */
-    border-radius: 12px;
-    max-width: 600px;
-    margin: var(--spacing-m) auto;
-}
+  padding: var(--spacing-m);
+  background-color: var(--color-inactive);              /* custom property */
+  border-radius: 12px;
+  max-width: 600px;
+  margin: var(--spacing-m) auto;
 
-section.newsletter h3 {
+
+  h3 {
     font-size: var(--font-size-m);
     margin-bottom: var(--spacing-s);
     color: var(--color-primary);
-}
+  }
 
-section.newsletter form {
+
+  form {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-s);
+
+
+    label {
+      font-size: var(--font-size-s);
+      font-weight: 400;
+      color: var(--color-primary);
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    input[type="email"] {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--color-primary);
+      border-radius: 8px;
+      outline: none;
+      transition: border-color var(--animation-duration);
+
+
+      &:focus { border-color: var(--color-accent); }
+    }
+
+
+    button[type="submit"] {
+      padding: 0.8rem 1.2rem;
+      background-color: var(--color-primary);
+      color: var(--color-secondary);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color var(--animation-duration);
+
+
+      &:hover {
+        background-color: var(--color-accent);
+        color: var(--color-primary);
+      }
+    }
+  }
 }
 
-section.newsletter label {
-    font-size: var(--font-size-s);
-    font-weight: 400;                           /* style guide */
-    color: var(--color-primary);
-    display: flex;
-    flex-direction: column;
-}
-
-section.newsletter input[type="email"],
-section.newsletter button[type="submit"] {
-    font-size: var(--font-size-s);
-}
-
-section.newsletter input[type="email"] {
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--color-primary);    /* custom property */
-    border-radius: 8px;
-    outline: none;
-    transition: border-color var(--animation-duration);
-}
-
-section.newsletter input[type="email"]:focus {
-    border-color: var(--color-accent);
-}
-
-section.newsletter button[type="submit"] {
-    padding: 0.8rem 1.2rem;
-    background-color: var(--color-primary);    /* custom property */
-    color: var(--color-secondary);             /* custom property */
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color var(--animation-duration);
-}
-
-section.newsletter button[type="submit"]:hover {
-    background-color: var(--color-accent);     /* cascade + custom property */
-    color: var(--color-primary);
-}
 
 /* =============================
-   Responsive
-   (Cascade: overschrijft basisregels bij schermbreedtes)
+   Typografie Media Queries
 ============================= */
-@media (max-width: 768px) {
-    header { flex-direction: column; align-items: flex-start; }
-    header nav ul { flex-direction: column; gap: 10px; }
-    .cards { flex-direction: column; align-items: center; }
-    footer { flex-direction: column; gap: 30px; }
-}
-
-@media (min-width: 900px) {
-    h1 { font-size: var(--font-size-xxl); }
+h1 {
+  @media (min-width: 900px) {
+    font-size: var(--font-size-xxl);
+  }
 }
