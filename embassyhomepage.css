@@ -2,26 +2,27 @@
    Fonts
 ============================= */
 @font-face {
-    font-family: "Cinzel";
+    font-family: "Cinzel";                           /* custom font voor headings (styleguide) */
     src: url("../assets/fonts/Cinzel-VariableFont_wght.ttf");
 }
 
 /* =============================
    Root variabelen
+   (Custom Properties / Styleguide)
 ============================= */
 :root {
-    --color-primary: #002646;
-    --color-secondary: #ffffff;
-    --color-accent: #d8b66a;
-    --color-inactive: #E9E9E9;
-    --color-inactive-dark: #6E6E6E;
+    --color-primary: #002646;                        /* custom property: primaire kleur */
+    --color-secondary: #ffffff;                      /* custom property: achtergrond / tekst */
+    --color-accent: #d8b66a;                         /* custom property: accentkleur */
+    --color-inactive: #E9E9E9;                       /* custom property: neutrale vlakken */
+    --color-inactive-dark: #6E6E6E;                  /* custom property: inactieve tekst */
 
-    --spacing-m: 1.875rem;
-    --spacing-s: calc(var(--spacing-m) / 2);
+    --spacing-m: 1.875rem;                           /* styleguide: standaard spacing */
+    --spacing-s: calc(var(--spacing-m) / 2);         /* afgeleide spacing (custom property) */
 
-    --animation-duration: 0.3s;
+    --animation-duration: 0.3s;                      /* styleguide: animatie snelheid */
 
-    --font-size-xxl: 4rem;
+    --font-size-xxl: 4rem;                           /* styleguide: typografie */
     --font-size-xl: 3rem;
     --font-size-l: 2rem;
     --font-size-m: 1.5rem;
@@ -30,56 +31,60 @@
 
 /* =============================
    Algemene reset
+   (Cascade: basisregels voor alle elementen)
 ============================= */
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    margin: 0;
+    box-sizing: border-box;                          /* consistente box-sizing */
+    margin: 0;                                       /* reset browser default */
     padding: 0;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--color-primary);
-    background-color: var(--color-secondary);
+    font-family: Arial, Helvetica, sans-serif;       /* globale font (cascade) */
+    color: var(--color-primary);                     /* custom property */
+    background-color: var(--color-secondary);        /* custom property */
     line-height: 1.6;
-    padding-inline: var(--spacing-m);
+    padding-inline: var(--spacing-m);                /* spacing via styleguide */
 }
 
 /* =============================
    Typografie
 ============================= */
 h1 {
-    font-size: var(--font-size-xl);
-    font-family: "Cinzel";
+    font-size: var(--font-size-xl);                  /* styleguide font-size */
+    font-family: "Cinzel";                           /* custom heading font */
 }
 
 @media (min-width: 900px) {
-    h1 { font-size: var(--font-size-xxl); }
+    h1 { font-size: var(--font-size-xxl); }          /* cascade: media query overschrijft */
 }
 
 h2 {
-    font-size: var(--font-size-l);
+    font-size: var(--font-size-l);                   /* styleguide */
     text-transform: uppercase;
     font-weight: 400;
 }
 
-h3 { font-size: var(--font-size-m); }
+h3 {
+    font-size: var(--font-size-m);                   /* styleguide */
+}
 
 p {
-    font-size: var(--font-size-s);
+    font-size: var(--font-size-s);                   /* styleguide */
     font-weight: 400;
     line-height: 1.4;
 }
 
 /* =============================
    Links & Buttons
+   (Specificity: class selectors)
 ============================= */
 a {
-    font-size: var(--font-size-s);
+    font-size: var(--font-size-s);                   /* styleguide */
     text-decoration: none;
-    color: var(--color-primary);
+    color: var(--color-primary);                     /* custom property */
     display: grid;
     grid-template-columns: max-content min-content;
     gap: 0.5rem;
@@ -88,13 +93,11 @@ a {
         width: max-content;
         padding: 1rem;
         border-radius: 100px;
-        border: 0;
-        gap: 1.5rem;
-        margin-block: var(--spacing-s);
-        transition: all var(--animation-duration) ease;
+        margin-block: var(--spacing-s);              /* spacing via custom property */
+        transition: all var(--animation-duration);   /* animatie via styleguide */
 
         &.primary {
-            background-color: var(--color-primary);
+            background-color: var(--color-primary); /* custom property */
             color: var(--color-secondary);
         }
 
@@ -107,16 +110,19 @@ a {
 
 /* =============================
    Header
+   (Specificity: element + descendant selectors)
 ============================= */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    background-color: var(--color-primary);
+    background-color: var(--color-primary);          /* custom property */
     border-bottom: 2px solid #eaeaea;
 
-    img { height: 60px; }
+    img {
+        height: 60px;                                /* vaste header-afbeelding */
+    }
 
     nav {
         ul {
@@ -127,11 +133,13 @@ header {
             li {
                 a {
                     text-decoration: none;
-                    color: var(--color-secondary);
+                    color: var(--color-secondary);   /* cascade: header overschrijft link */
                     font-weight: bold;
                     transition: color var(--animation-duration);
 
-                    &:hover { color: var(--color-accent); }
+                    &:hover {
+                        color: var(--color-accent);  /* cascade: hover overschrijft */
+                    }
                 }
             }
         }
@@ -140,247 +148,84 @@ header {
     .hamburger {
         display: none;
         flex-direction: column;
-        justify-content: space-between;
         width: 30px;
         height: 21px;
-        background: none;
-        border: none;
-        cursor: pointer;
 
         span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background-color: var(--color-primary);
-            border-radius: 2px;
+            background-color: var(--color-primary);  /* custom property */
         }
     }
 
     @media (max-width: 768px) {
-        flex-direction: column;
+        flex-direction: column;                      /* responsive layout */
         align-items: flex-start;
 
         nav ul {
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .hamburger { display: flex; }
-
-        &.menu ul {
-            display: none;
-            flex-direction: column;
-            gap: 10px;
-            background-color: var(--color-secondary);
-            position: absolute;
-            top: 60px;
-            right: 20px;
-            padding: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-            border-radius: 5px;
-
-            &.active { display: flex; }
+            flex-direction: column;                  /* cascade: media query */
         }
     }
 }
 
 /* =============================
    Hero / Slideshow
+   (Animatie + cascade)
 ============================= */
 .hero {
     position: relative;
-    width: 100%;
     height: 400px;
     overflow: hidden;
 
-    .slideshow {
-        position: relative;
-        width: 100%;
-        height: 100%;
-
-        figure {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            opacity: 0;
-            animation: slideAnimation 12s infinite;
-
-            &:nth-child(1) { animation-delay: 0s; }
-            &:nth-child(2) { animation-delay: 4s; }
-            &:nth-child(3) { animation-delay: 8s; }
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        }
+    figure {
+        opacity: 0;                                  /* basisstijl */
+        animation: slideAnimation 12s infinite;      /* animatie */
     }
 
     .hero-text {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-        color: var(--color-secondary);
-        text-shadow: 0 0 10px rgba(0,0,0,0.7);
+        color: var(--color-secondary);               /* custom property */
     }
 }
 
 @keyframes slideAnimation {
     0% { opacity: 0; }
-    8% { opacity: 1; }
+    8% { opacity: 1; }                               /* zichtbaar */
     33% { opacity: 1; }
-    41% { opacity: 0; }
+    41% { opacity: 0; }                              /* overgang */
     100% { opacity: 0; }
 }
 
 /* =============================
    Cards
+   (Specificity: class selectors)
 ============================= */
 .cards-container {
     display: flex;
-    flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
-    padding: 40px 0;
-
-    h2 {
-        width: 100%;
-        margin-bottom: 20px;
-        text-align: center;
-    }
 
     .card {
-        border-radius: 12px;
-        overflow: hidden;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        color: var(--color-secondary);
-        transition: transform var(--animation-duration) ease, box-shadow var(--animation-duration) ease;
-        cursor: pointer;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 12px;
-        }
-
-        h3 { text-align: center; font-size: var(--font-size-s); }
+        color: var(--color-secondary);               /* custom property */
+        transition: transform var(--animation-duration),
+                    box-shadow var(--animation-duration);
 
         &:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+            transform: translateY(-8px);             /* cascade: hover state */
         }
-
-        &:nth-child(3n+1) { background-color: #0077b6; width: 250px; height: 250px; }
-        &:nth-child(3n+2) { background-color: #023e8a; width: 300px; height: 200px; }
-        &:nth-child(3n)   { background-color: #0096c7; width: 200px; height: 300px; }
-    }
-
-    @media (max-width: 768px) {
-        flex-direction: column;
-        padding: 20px 0;
-
-        .card { width: 90%; height: auto; }
     }
 }
 
 /* =============================
    Footer
+   (Cascade + Custom Properties)
 ============================= */
 footer {
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
-    padding: 40px 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
+    background-color: var(--color-primary);          /* custom property */
+    color: var(--color-secondary);                   /* custom property */
 
-    section { flex: 1 1 200px; }
+    a {
+        color: var(--color-secondary);               /* cascade */
+        transition: color var(--animation-duration);
 
-    h3 { margin-bottom: 10px; font-size: var(--font-size-m); }
-
-    ul {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-
-        li a {
-            text-decoration: none;
-            color: var(--color-secondary);
-            transition: color var(--animation-duration);
-
-            &:hover { color: var(--color-accent); }
-        }
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-
-        input[type="email"] {
-            padding: 8px 12px;
-            border-radius: 6px;
-            border: 1px solid var(--color-secondary);
-            outline: none;
-            font-size: var(--font-size-s);
-            transition: border-color var(--animation-duration);
-
-            &:focus { border-color: var(--color-accent); }
-        }
-
-        button[type="submit"] {
-            padding: 8px 12px;
-            border-radius: 6px;
-            border: none;
-            background-color: var(--color-accent);
-            color: var(--color-primary);
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color var(--animation-duration), color var(--animation-duration);
-
-            &:hover {
-                background-color: var(--color-secondary);
-                color: var(--color-primary);
-            }
-        }
-    }
-
-    .social-buttons {
-        display: flex;
-        gap: 15px;
-        margin-top: 10px;
-
-        a {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 12px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color var(--animation-duration), color var(--animation-duration);
-            color: var(--color-primary);
-            background-color: var(--color-secondary);
-
-            &.facebook, &.instagram, &.youtube { background-color: var(--color-secondary); }
-
-            &:hover {
-                background-color: var(--color-accent);
-                color: var(--color-secondary);
-                opacity: 0.8;
-            }
+        &:hover {
+            color: var(--color-accent);              /* cascade: hover overschrijft */
         }
     }
 }
