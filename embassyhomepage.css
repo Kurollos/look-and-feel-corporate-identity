@@ -8,6 +8,7 @@
 
 /* =============================
    Root variabelen
+   (Custom Properties)
 ============================= */
 :root {
     --color-primary: #002646;
@@ -16,70 +17,72 @@
     --color-inactive: #E9E9E9;
     --color-inactive-dark: #6E6E6E;
 
-    --spacing-m: 1.875rem;
-    --spacing-s: calc(var(--spacing-m) / 2);
+    --spacing-m: 1.875rem;                          /* custom property voor spacing */
+    --spacing-s: calc(var(--spacing-m) / 2);        /* custom property voor spacing */
 
     --animation-duration: 0.3s;
 
-    --font-size-xxl: 4rem;
-    --font-size-xl: 3rem;
-    --font-size-l: 2rem;
-    --font-size-m: 1.5rem;
-    --font-size-s: 1rem;
+    --font-size-xxl: 4rem;                          /* custom property voor XXL font-size */
+    --font-size-xl: 3rem                           /* custom property voor XL font-size */
+    --font-size-l: 2rem;                          /* custom property voor L font-size */
+    --font-size-m: 1.5rem;                      /* custom property voor M font-size */
+    --font-size-s: 1rem;                        /* custom property voor S font-size */
 }
 
 /* =============================
    Algemene reset
+   (Cascade: basisregels voor alle elementen)
 ============================= */
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    margin: 0;
+    box-sizing: border-box;                             /* consistente box-sizing */
+    margin: 0;                                          /* reset browser default */
     padding: 0;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--color-primary);
-    background-color: var(--color-secondary);
+    font-family: Arial, Helvetica, sans-serif;          /* globale font (cascade) */
+    color: var(--color-primary);                        /* custom property */   
+    background-color: var(--color-secondary);           /* custom property */
     line-height: 1.6;
-    padding-inline: var(--spacing-m);
+    padding-inline: var(--spacing-m);                   /* spacing via styleguide */
 }
 
 /* =============================
    Typografie
 ============================= */
 h1 {
-    font-size: var(--font-size-xl);
-    font-family: "Cinzel";
+    font-size: var(--font-size-xl);                /* spacing via styleguide */
+    font-family: "Cinzel";                        /* custom heading font */
 }
 
 @media (min-width: 900px) {
-    h1 { font-size: var(--font-size-xxl); }
+    h1 { font-size: var(--font-size-xxl); }       /* cascade: media query overschrijft */
 }
 
 h2 {
-    font-size: var(--font-size-l);
+    font-size: var(--font-size-l);                /* styleguide */
     text-transform: uppercase;
     font-weight: 400;
 }
 
-h3 { font-size: var(--font-size-m); }
+h3 { font-size: var(--font-size-m); }              /* styleguide */
 
 p {
-    font-size: var(--font-size-s);
+    font-size: var(--font-size-s);                  /* styleguide */
     font-weight: 400;
     line-height: 1.4;
 }
 
 /* =============================
    Links & Buttons
+   (Specificity: class selectors)
 ============================= */
 a {
-    font-size: var(--font-size-s);
+    font-size: var(--font-size-s);                        /* styleguide */
     text-decoration: none;
-    color: var(--color-primary);
+    color: var(--color-primary);                           /* custom property */
     display: grid;
     grid-template-columns: max-content min-content;
     gap: 0.5rem;
@@ -90,11 +93,11 @@ a {
         border-radius: 100px;
         border: 0;
         gap: 1.5rem;
-        margin-block: var(--spacing-s);
-        transition: all var(--animation-duration) ease;
+        margin-block: var(--spacing-s);                              /* spacing via custom property */
+        transition: all var(--animation-duration) ease;              /* animatie via styleguide */
 
         &.primary {
-            background-color: var(--color-primary);
+            background-color: var(--color-primary);                  /* custom property */
             color: var(--color-secondary);
         }
 
@@ -107,16 +110,17 @@ a {
 
 /* =============================
    Header
+   (Specificity: element + descendant selectors)
 ============================= */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    background-color: var(--color-primary);
+    background-color: var(--color-primary);                   /* custom property */
     border-bottom: 2px solid #eaeaea;
 
-    img { height: 60px; }
+    img { height: 60px; }                                    /* vaste header-afbeelding */
 
     nav {
         ul {
@@ -127,9 +131,9 @@ header {
             li {
                 a {
                     text-decoration: none;
-                    color: var(--color-secondary);
+                    color: var(--color-secondary);          /* cascade: header overschrijft link */
                     font-weight: bold;
-                    transition: color var(--animation-duration);
+                    transition: color var(--animation-duration);     /* cascade: hover overschrijft */
 
                     &:hover { color: var(--color-accent); }
                 }
@@ -151,17 +155,17 @@ header {
             display: block;
             height: 3px;
             width: 100%;
-            background-color: var(--color-primary);
+            background-color: var(--color-primary);          /* custom property */
             border-radius: 2px;
         }
     }
 
     @media (max-width: 768px) {
-        flex-direction: column;
+        flex-direction: column;                            /* responsive layout */
         align-items: flex-start;
 
         nav ul {
-            flex-direction: column;
+            flex-direction: column;                       /* cascade: media query */
             gap: 10px;
         }
 
@@ -186,6 +190,7 @@ header {
 
 /* =============================
    Hero / Slideshow
+   (Animatie + cascade)
 ============================= */
 .hero {
     position: relative;
@@ -205,8 +210,8 @@ header {
             width: 100%;
             height: 100%;
             margin: 0;
-            opacity: 0;
-            animation: slideAnimation 12s infinite;
+            opacity: 0;                               /* basisstijl */
+            animation: slideAnimation 12s infinite;    /* animatie */
 
             &:nth-child(1) { animation-delay: 0s; }
             &:nth-child(2) { animation-delay: 4s; }
@@ -224,21 +229,22 @@ header {
         position: absolute;
         bottom: 20px;
         left: 20px;
-        color: var(--color-secondary);
+        color: var(--color-secondary);                           /* custom property */
         text-shadow: 0 0 10px rgba(0,0,0,0.7);
     }
 }
 
 @keyframes slideAnimation {
     0% { opacity: 0; }
-    8% { opacity: 1; }
+    8% { opacity: 1; }                                     /* zichtbaar */
     33% { opacity: 1; }
-    41% { opacity: 0; }
+    41% { opacity: 0; }                                     /* overgang */
     100% { opacity: 0; }
 }
 
 /* =============================
    Cards
+   (Specificity: class selectors)
 ============================= */
 .cards-container {
     display: flex;
@@ -261,7 +267,7 @@ header {
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        color: var(--color-secondary);
+        color: var(--color-secondary);                     /* custom property */
         transition: transform var(--animation-duration) ease, box-shadow var(--animation-duration) ease;
         cursor: pointer;
 
@@ -276,7 +282,7 @@ header {
         h3 { text-align: center; font-size: var(--font-size-s); }
 
         &:hover {
-            transform: translateY(-8px) scale(1.03);
+            transform: translateY(-8px) scale(1.03);               /* cascade: hover state */
             box-shadow: 0 12px 20px rgba(0,0,0,0.15);
         }
 
@@ -295,10 +301,11 @@ header {
 
 /* =============================
    Footer
+    (Cascade + Custom Properties)
 ============================= */
 footer {
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
+    background-color: var(--color-primary);           /* custom property */
+    color: var(--color-secondary);                      /* custom property */
     padding: 40px 20px;
     display: flex;
     flex-wrap: wrap;
@@ -317,50 +324,50 @@ footer {
 
         li a {
             text-decoration: none;
-            color: var(--color-secondary);
+            color: var(--color-secondary);                /* cascade */
             transition: color var(--animation-duration);
 
-            &:hover { color: var(--color-accent); }
+            &:hover { color: var(--color-accent); }       /* cascade: hover overschrijft */
         }
     }
 
     form {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+        display: flex;                                 /* flex layout voor formulier */
+        flex-direction: column;                        /* elementen onder elkaar */
+        gap: 10px;                                     /* consistente spacing */
 
         input[type="email"] {
-            padding: 8px 12px;
-            border-radius: 6px;
-            border: 1px solid var(--color-secondary);
+            padding: 8px 12px;                        /* interne spacing */
+            border-radius: 6px;                       /* afgeronde hoeken */
+            border: 1px solid var(--color-secondary);  /* custom property: kleur */
             outline: none;
-            font-size: var(--font-size-s);
-            transition: border-color var(--animation-duration);
+            font-size: var(--font-size-s);              /* styleguide font-size */
+            transition: border-color var(--animation-duration); /* animatie via custom property */
 
-            &:focus { border-color: var(--color-accent); }
+            &:focus { border-color: var(--color-accent); }  /* cascade: focus overschrijft border */
         }
 
         button[type="submit"] {
             padding: 8px 12px;
             border-radius: 6px;
             border: none;
-            background-color: var(--color-accent);
-            color: var(--color-primary);
-            font-weight: bold;
+            background-color: var(--color-accent);         /* custom property */
+            color: var(--color-primary);                   /* custom property */
+            font-weight: bold;                              /* styleguide */
             cursor: pointer;
-            transition: background-color var(--animation-duration), color var(--animation-duration);
+            transition: background-color var(--animation-duration), color var(--animation-duration);  /* animatie via styleguide */
 
             &:hover {
-                background-color: var(--color-secondary);
+                background-color: var(--color-secondary);   /* cascade: hover state */
                 color: var(--color-primary);
             }
         }
     }
 
     .social-buttons {
-        display: flex;
-        gap: 15px;
-        margin-top: 10px;
+        display: flex;    
+        gap: 15px;                /* flex layout */
+        margin-top: 10px;          /* spacing tussen knoppen */
 
         a {
             display: flex;
@@ -369,15 +376,15 @@ footer {
             padding: 8px 12px;
             border-radius: 6px;
             text-decoration: none;
-            font-weight: bold;
-            transition: background-color var(--animation-duration), color var(--animation-duration);
-            color: var(--color-primary);
-            background-color: var(--color-secondary);
+            font-weight: bold;                                                                        /* styleguide */
+            transition: background-color var(--animation-duration), color var(--animation-duration); /* animatie via custom property */
+            color: var(--color-primary);                                                             /* custom property */
+            background-color: var(--color-secondary);                                                /* custom property */
 
-            &.facebook, &.instagram, &.youtube { background-color: var(--color-secondary); }
+            &.facebook, &.instagram, &.youtube { background-color: var(--color-secondary); }   /* component varianten */
 
             &:hover {
-                background-color: var(--color-accent);
+                background-color: var(--color-accent);                                       /* cascade: hover overschrijft */
                 color: var(--color-secondary);
                 opacity: 0.8;
             }
