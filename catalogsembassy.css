@@ -1,6 +1,9 @@
 /* =============================
    Root Variabelen
    (Custom Properties)
+   Worden gebruikt als vaste waarden voor kleuren,
+   spacing, typografie en animaties.
+   Dit zorgt voor consistentie en makkelijker onderhoud.
 ============================= */
 :root {
   --spacing-m: 1.875rem;                           /* custom property voor spacing */
